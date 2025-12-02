@@ -201,3 +201,44 @@ In contrast, architectures based on custom DNS servers or domain controllers in 
 
 [^2_20]: https://faddom.com/azure-vms-pricing/
 
+
+---
+
+# Azure Private DNS Resolver is a regional service.
+
+Is there a way to make Azure Private DNS Resolver be used across regions also?
+
+Azure DNS Private Resolver is indeed a regional service, meaning each resolver is deployed within a specific Azure region and provides DNS resolution endpoints only within that region. However, it is possible to use Azure DNS Private Resolver for cross-region scenarios by deploying resolver instances in each region where DNS resolution is required and then configuring your networking and DNS architecture appropriately.[^3_9]
+
+To achieve cross-region DNS resolution:
+
+- Deploy a Private DNS Resolver in each Azure region where you need local DNS resolution.
+- Link your Azure Private DNS zones—which are globally replicated resources—to virtual networks in each relevant region. This allows VMs and services in any region to resolve DNS names from the shared zone, minimizing the need for DNS queries to cross regional boundaries.[^3_5]
+- For hybrid and multi-region environments, conditional forwarders or failover can direct DNS queries to the nearest available resolver endpoint. On-premises or external DNS systems can be configured to forward requests to more than one resolver for redundancy.
+- This approach ensures high availability and minimizes single-region dependencies, as recommended best practice is to avoid relying on DNS resolution from a remote region for production workloads.[^3_3][^3_6][^3_7]
+
+In summary, while Azure DNS Private Resolver is regional, cross-region scenarios are handled by deploying resolvers in each needed region and linking virtual networks to globally available Private DNS zones, often with redundant forwarding or failover policies in place for maximum resiliency.[^3_6][^3_7][^3_5]
+<span style="display:none">[^3_1][^3_10][^3_2][^3_4][^3_8]</span>
+
+<div align="center">⁂</div>
+
+[^3_1]: https://learn.microsoft.com/en-us/azure/dns/private-resolver-reliability
+
+[^3_2]: https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/private-endpoint-dns-resolution-with-azure-private-resolver-for-multi-region/3679643
+
+[^3_3]: https://www.reddit.com/r/AZURE/comments/1h5xjng/dns_private_resolver_multi_region/
+
+[^3_4]: https://learn.microsoft.com/en-us/azure/architecture/networking/architecture/azure-dns-private-resolver
+
+[^3_5]: https://marcingastol.com/implementing-geo-redundant-dns-for-multi-region-azure-architectures/
+
+[^3_6]: https://allazureblog.wordpress.com/2025/03/04/simplifying-private-dns-in-azure-understanding-adds-and-dns-private-resolvers/
+
+[^3_7]: https://docs.azure.cn/en-us/dns/tutorial-dns-private-resolver-failover
+
+[^3_8]: https://mikeguy.co.uk/posts/azure-multiregion-pdns/
+
+[^3_9]: https://learn.microsoft.com/en-us/azure/dns/dns-private-resolver-overview
+
+[^3_10]: https://www.youtube.com/watch?v=V7tHg_954t8
+
