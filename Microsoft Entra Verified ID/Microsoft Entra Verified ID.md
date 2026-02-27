@@ -127,6 +127,29 @@ A DID document, is a digital document that is **accessible using a verifiable da
 and **contains information related to a specific decentralized identifier**, such as the 
 associated repository and public key information.
 
+The `did:example:123456abcdef` **resolves to a DID Document**.
+The DID Doc contains information about the DID, for example it contains the DID **controller**.
+The values in the DID Doc **are required to very the verifiable credentials**.
+
+> Example 1: a simple DID Document
+
+```
+{
+"@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+]
+"id": "did:example: 123456789abcdefghi",
+"authentication": [{
+    // used to authenticate as did:...fghi
+    "id": "did:example: 123456789abcdefghi#keys-1",
+    "type": "Ed25519VerificationKey2020",
+    "controller": "did:example: 123456789abcdefghi",
+    "publickeyMultibase": "zH3C2AVvLMv6gmMNam3uVAjZpfkcJCwDwnZn6z3wXmqPV"
+}]
+}
+```
+
 ---
 
 [01.EcosystemOverview]: ./01.EcosystemOverview.png
