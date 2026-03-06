@@ -247,5 +247,7 @@ such as authentication and claims, to a **Relying Party (RP) / Verifier**  which
 
 In this model, **the RP trusts assertions made by the OP**, i.e. the OP is the issuer of these assertions.
 
+![03.SIOPv2](./03.SIOPv2.png)    
+
 ---
 
