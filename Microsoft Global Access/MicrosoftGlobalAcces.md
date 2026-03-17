@@ -1,9 +1,19 @@
 # Global Secure Access with Microsoft Entra
 
-
 ![Global Secure Acces Architecture](./20260311-MicrosoftGlobalSecureAccess-01.jpg)
 
-This article expands on the more specific case described by Secure Access to Applications with Azure, where the main aim is to secure access to an on-premises application.
+This article expands on the more specific case described by the blog post [Secure Access to Applications with Azure](https://www.neteye-blog.com/2025/09/secure-access-to-applications-with-azure/), 
+where the main aim is to secure access to an on-premises application using Microsoft Entra Application Proxy.
+
+[Global Secure Acces](https://learn.microsoft.com/en-us/entra/global-secure-access/) is a unified solution that conisderably 
+extends the general concepts discussed in the context of the Microsoft Entra Application Proxy, which covers only the scenario
+of private access to (on-premises) web applications.
+
+Global Secure Acces makes it possible and easy to achieve the following goals:
+
+1. completely remove the need for a VPN and the corresponding...
+2. 
+ 
 
 SWG: Secure Web Gateway to control access to resources available on the public Internet
 ZTNA: Zero Trust Network Access to control access to private resources
