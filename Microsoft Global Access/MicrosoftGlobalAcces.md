@@ -59,9 +59,27 @@ tunnels, although this details is transparent to the user:
 
 ## The GSA Connector
 
-The GSA Connector is software conceptually equivalent to the Microsoft Entra Application Proxy connector,
-in that it is a Microsoft managed lightweight piece of software that must be istalled on one or more servers
-on the local network where resources that must be securely exposed for access are.  
+The GSA Connector is software conceptually equivalent to the Microsoft Entra Application Proxy connector.
+It is a Microsoft managed lightweight piece of software that must be istalled on one or more servers
+on the private network where the resources that must be securely exposed to legitimate users for access 
+are located. The Windows servers on which the GSA Connectors are installed must have line-of-sight to these
+resouces and satisfy some minimal requirements. 
+
+The GSA Connector can and should be installed on multiple Windows servers for redundancy and to guarantee
+their operation at all times also during any updates. The connectors can and should also be group logically,
+but this is a more advanced topic and this article refers the interest reader to the corresponding documentation
+for further details.
+
+**GSA connectors only send outbound requests over ports 443 and 80 and must be able to reach the Global Secure Edge (GSE)**, 
+therefore they do not need any special opening rule in the existing firewall. No inbound traffic is necessary and no ports 
+must be open for inbound traffic, the traffic flows both ways after a session is established with the GS. 
+
+**GSA Connectors are stateless**, and the number of users or sessions does not affect them and the memory consumption is low. 
+They respond to the number of requests and the payload size. With standard web traffic, an average machine can handle 
+2,000 requests per second. 
+
+The CPU and the network capacity have a much larger impact on the connector performance. The CPU is used for TLS encryption 
+and decryption, whereas networking is important to get fast connectivity to the applications and the online service.
 
 ---
 
@@ -84,13 +102,6 @@ This compliant network check is specific to the tenant in which it is configured
 
 The compliant network is different than IPv4, IPv6, or geographic locations you might configure in Microsoft Entra. Administrators are not required to review and maintain compliant network IP addresses/ranges, strengthening the security posture and minimizing the administrative overhead.
 
-Microsoft Entra private network connectors
-
-Connectors only send outbound requests. The outbound traffic is sent to the service and to the published resources and applications. You don't have to open inbound ports because traffic flows both ways after a session is established. You also don't have to configure inbound access through your firewalls.
-
-Connectors are stateless, and the number of users or sessions doesn't affect them. Instead, they respond to the number of requests and the payload size. With standard web traffic, an average machine can handle 2,000 requests per second.
-
-CPU and the network define connector performance. CPU performance is needed for TLS encryption and decryption, whereas networking is important to get fast connectivity to the applications and the online service.
 
 
 Private Access
