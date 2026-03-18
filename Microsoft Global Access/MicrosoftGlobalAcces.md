@@ -35,6 +35,8 @@ bandwith performance and low latency.
 
 The **Global Secure Access Client software (GSAC)** is installed on the user's system on various platform; 
 it establishes a secure tunnel to the **Global Secure Edge** and all its managed services. 
+Installation and management of the GSAC can be implemented with any popular **MDM (Mobile Device Management)**,
+while the updates are managed by Microsoft and clearly sibject to the MDM solution for distribution.
 
 **The GSAC software integrates at the OS level** and not at the application software level; therefore,
 no application on the user's system can bypass it once it is installed. All the traffic originating from 
@@ -57,8 +59,9 @@ tunnels, although this details is transparent to the user:
 
 ## The GSA Connector
 
-The GSA Connector is conceptually equivalent to the Microsoft Entra Application Proxy connector,
-in that it is a Microsoft managed lightweight piece of software that must be istalled on  
+The GSA Connector is software conceptually equivalent to the Microsoft Entra Application Proxy connector,
+in that it is a Microsoft managed lightweight piece of software that must be istalled on one or more servers
+on the local network where resources that must be securely exposed for access are.  
 
 ---
 
