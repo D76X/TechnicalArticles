@@ -11,23 +11,32 @@ of private access to (on-premises) web applications.
 
 Global Secure Acces makes it possible and easy to achieve the following goals:
 
-1. completely remove the need for a VPN and the corresponding...
-2. 
+1. Completely remove the need for a VPN and the corresponding setup and maintenance costs.
+2. Completely remove the need for a DMZ network to support the VPN infrastructure and the corresponding security risks caused by its implicit and necessary wide access model.
+3. Provide a truly identity centric acccess solution with granular control over the digital assets.
+4. Allow access control to assets on the Internet or on private networks from anywhere and over any protocol.
  
+## Key Terms
 
-SWG: Secure Web Gateway to control access to resources available on the public Internet
-ZTNA: Zero Trust Network Access to control access to private resources
-CASB: Cloud Access Security Broker to enforce access policies, discover private resources and understand threats
-SDWAN to provide WAN S2S connectivity (NOT IN FOCUS)
-
-
-One advantage is the massive scale of the Microsoft Global WAN, where Global Access runs.
-
-This works with the Global Secure Access Client software (GSAC) installed on the user's system, which establishes a secure tunnel to the Global Secure Edge and all its (managed) services. It is important to point out that the GSAC integrates at the OS level and not at the application software level; therefore,it no application on the user's system can bypass it once installed. All the traffic originating from and coming to the user's machine will be routed through the GSAC.
-
+- GSA: Global Secure Acces
+- GSAC: Global Secure Acces Client Software
+- GSE: Global Secure Edge aka SASE: Secure Access Service Edge
+- ZTNA: Zero Trust Network Access to control access to private resources
+- SWG: Secure Web Gateway to control access to resources available on the public Internet
+- CASB: Cloud Access Security Broker to enforce access policies, discover private resources and understand threats
+- SDWAN to provide WAN S2S connectivity (NOT IN FOCUS)
 
 
+GSA takes advantage of the massive scale of the Microsoft Global WAN.
 
+The **Global Secure Access Client software (GSAC)** is installed on the user's system, which establishes 
+a secure tunnel to the **Global Secure Edge** and all its managed services. 
+
+**The GSAC software integrates at the OS level** and not at the application software level; therefore,
+no application on the user's system can bypass it once it is installed. All the traffic originating from 
+and coming to the user's machine will be routed throung the GSAC and between the GSAC software and the 
+Global Secure Edge. The **Global Secure Edge (GSE)** and its various services, in turn communicate with 
+the **Microsoft Entra Infrastructure**. 
 
 The Access Policy resource in Microsoft Entra ID has been updated so that, during its definition, one of the selectable options for the target of the access policy is the Global Secure Access. By selecting the Global Secure Access as the target of an access policy, the options available for selection at the step of the traffic profiles to which the policy will be applied will be the following:
 
