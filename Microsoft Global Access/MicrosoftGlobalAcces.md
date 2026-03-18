@@ -26,17 +26,41 @@ Global Secure Acces makes it possible and easy to achieve the following goals:
 - CASB: Cloud Access Security Broker to enforce access policies, discover private resources and understand threats
 - SDWAN to provide WAN S2S connectivity (NOT IN FOCUS)
 
+# Basic architecture of the Global Secure Access solution
 
-GSA takes advantage of the massive scale of the Microsoft Global WAN.
+GSA takes advantage of the massive scale of the Microsoft Global WAN which also guarantee its high 
+bandwith performance and low latency.
 
-The **Global Secure Access Client software (GSAC)** is installed on the user's system, which establishes 
-a secure tunnel to the **Global Secure Edge** and all its managed services. 
+## The GSA Client Software
+
+The **Global Secure Access Client software (GSAC)** is installed on the user's system on various platform; 
+it establishes a secure tunnel to the **Global Secure Edge** and all its managed services. 
 
 **The GSAC software integrates at the OS level** and not at the application software level; therefore,
 no application on the user's system can bypass it once it is installed. All the traffic originating from 
 and coming to the user's machine will be routed throung the GSAC and between the GSAC software and the 
 Global Secure Edge. The **Global Secure Edge (GSE)** and its various services, in turn communicate with 
 the **Microsoft Entra Infrastructure**. 
+
+The GSAC software authenticates the user to their Microsoft Entra ID Tenant and interacts with the 
+Global Secure Edge (GSE) using this identity. Furthermore any traffic that the GSAC software forwards
+to the Global Secure Edge (GSE) is always accompanied by the corresponding access tokens that are 
+granted to the user by their Microsoft Entra ID Tenant, therefore the GSE through these access tokes 
+is aware of the access policies that must be applied to each individual access and traffic.
+
+Traffic from the GSAC software to the Global Secure Edge (GSE) is actually split into three individual
+tunnels, although this details is transparent to the user:
+
+- Traffic to the public Internet including SASS Services
+- Traffic to any M365 SaaS Services
+- Traffic to any private network for any communication protocol
+
+## The GSA Connector
+
+The GSA Connector is conceptually equivalent to the Microsoft Entra Application Proxy connector,
+in that it is a Microsoft managed lightweight piece of software that must be istalled on  
+
+---
 
 The Access Policy resource in Microsoft Entra ID has been updated so that, during its definition, one of the selectable options for the target of the access policy is the Global Secure Access. By selecting the Global Secure Access as the target of an access policy, the options available for selection at the step of the traffic profiles to which the policy will be applied will be the following:
 
@@ -53,13 +77,12 @@ Named Locations is a tenant-level Microsoft Entra ID feature in which locations 
 
 The Enable Global Secure Access signaling in Conditional Access setting enhances and simplifies the use of locations in access policy definitions; It is possible to select all compliant network locations, which in practice ????
 
-
-
 This compliant network check is specific to the tenant in which it is configured. For example, if you define a Conditional Access policy requiring compliant network in contoso.com, only users with the Global Secure Access or with the Remote Network configuration are capable of passing this control. A user from fabrikam.com will not be able to pass contoso.com's compliant network policy.
 
 The compliant network is different than IPv4, IPv6, or geographic locations you might configure in Microsoft Entra. Administrators are not required to review and maintain compliant network IP addresses/ranges, strengthening the security posture and minimizing the administrative overhead.
 
 Microsoft Entra private network connectors
+
 Connectors only send outbound requests. The outbound traffic is sent to the service and to the published resources and applications. You don't have to open inbound ports because traffic flows both ways after a session is established. You also don't have to configure inbound access through your firewalls.
 
 Connectors are stateless, and the number of users or sessions doesn't affect them. Instead, they respond to the number of requests and the payload size. With standard web traffic, an average machine can handle 2,000 requests per second.
