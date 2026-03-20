@@ -276,7 +276,7 @@ The following is a list of protocols that are covered by the GSA Private Access:
 - Printer procols
 - others..
 
-### GSA Private Access Domain Resolition 
+### [GSA Private Access Domain Resolution Mechanism](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-private-name-resolution)  
 
 An important aspect of Private Access is how domain name resolution (DNS) is accomplished; this is important 
 because it allows a GSAC to resolve private domains whose records are on a private domain server owned by the 
@@ -284,7 +284,30 @@ organization and possibly internal to the corporate network, without having a re
 service or even being actually tunneled to the corporate network at all.
 
 It is in fact natural to expect that a user on a manged device on the public Internet, for example a remote
-employee with a managed device with the GSA Client, 
+employee with a managed device with the GSA Client working from home, should be able to resolve domain names
+maintained by the employer's DNS Server, that is a private DNS Server. 
+
+The foundamental problem in this case is that GSA is a not a VPN and therefore there is no possibility 
+to use the private employer's DNS Server as DNS Server of the user's managed device; there is no direct 
+network line of sight between the managed device and the firm's private network.
+
+This problem is solved transparently to the user by the GSA Private Access technology through: 
+
+- The DNS Service and Cache component of the Secure Access Service Edge
+- The GSA Connector that is installed on-premise
+- The set of Microsoft Entra ID App Registration that are used to controll the on-premise acccess through GSA as explained above
+
+The way these three elements cooperate to make possible the DNS Resolution of private records from the managed device
+is not technically straightforward, therefore a simplified explanation will be presented here, referring the readers 
+intrested in the thourough technical details to the documentation.
+
+- for each App Regitration a local DNS Suffix `<appid>.globalsecureaccess.local` is configured in the GSA Client
+- when the user on the managed device tries to resolve a name from teh machine the GSA client will append the `<appid>.globalsecureaccess.local` to it.
+- when the `label-name.<appid>.globalsecureaccess.local` is received by the SASE DNS Service
+- if the DNS Service has a cached resolution for that entry it respnds to the DNS lookup of the client
+- if the DNS Service does not have a cached resolution for that entry it strips the `<appid>.globalsecureaccess.local` part and stage it for the on-premise GSA connector to be picked up by its relay mechanism
+- when the on-premise connector finds the DNS related item it tries to resolve the name against the on-premise DNS server with which it is configured
+- if a record is fond then the response travels back to the SSA DNS Service, it is cached and sent over to the GSA client on the managed device
 
 ---
 
