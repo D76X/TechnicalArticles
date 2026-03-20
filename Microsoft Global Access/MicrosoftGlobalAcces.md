@@ -307,88 +307,134 @@ intrested in the thourough technical details to the documentation.
 - if the DNS Service has a cached resolution for that entry it respnds to the DNS lookup of the client
 - if the DNS Service does not have a cached resolution for that entry it strips the `<appid>.globalsecureaccess.local` part and stage it for the on-premise GSA connector to be picked up by its relay mechanism
 - when the on-premise connector finds the DNS related item it tries to resolve the name against the on-premise DNS server with which it is configured
-- if a record is fond then the response travels back to the SSA DNS Service, it is cached and sent over to the GSA client on the managed device
+- if a record is found then the response travels back to the SSA DNS Service, it is cached and sent over to the GSA client on the managed device
 
 ---
 
 # Internet Access through GSA
 
-This works for all the traffic at LAYER-7 (Application Layer); therefore, HTTP(S) and the controls are based on Web Filtering Policies (WFP) that are defined in Microsoft Entra ID.
+The Internet Access through GSA works for all the traffic at LAYER-7 (Application Layer); therefore, HTTP(S) and 
+the controls are based on **Web Filtering Policies (WFP)** that are defined in Microsoft Entra ID.
 
-Web filtering policies are essentially named groupings of web categories or FQDNs for which a certain action is specified.
+## Web Filtering Policies (WFP)
 
-For example, a WFP can be created with the following details:
+Web filtering policies are essentially named groupings of the following attributes and for which a certain action is specified: 
 
-Name: Social
-Categories: Social Platforms
-FQDN: https://www.facebook.com/
-Action: Allow
-Name: WorkOnly
-Categories: Any
-FQDN: https://www.**microsoft**.com/, https://www.**mycorporate**.**/,
-Action: Allow
-Name: Ban Social, Entertainment and Gambling
-Categories: Gambling, Entertainment, Social
-FQDN: https://www.**microsoft**.com/, https://www.**mycorporate**.**/, **gambling**,...
-Action: Block
+- web categories 
+- FQDNs .
 
+For example, Web Filtering Policies can be created with the following details:
 
-Internet Access Security Profiles (IASP) are collections of web filtering policies that will be applied to sets of groups of users within a tenant. Each IASP specifies its own unique value of priority between 0 and 65000, and each arranges its set of WFP by specifying for each a number that indicates its relative priority with respect to the other WFP within the same WFP.
+- Name: Social
+- Categories: Social Platforms
+- FQDN: https://www.facebook.com/
+- Action: Allow
 
-IASP Name: Marketing Work
-Priority: 500
-WFP-Priority-100: Social
-WFP-Priority-200: Work
-WFP-Priority-300: Ban Social, Entertainment and Gambling
-IASP Name: General Work
-Priority: 600
-WFP-Priority-200: Work
-WFP-Priority-300: Ban Social, Entertainment and Gambling
+- Name: WorkOnly
+- Categories: Any
+- FQDN: https://www.**microsoft**.com/, https://www.**mycorporate**.**/,
+- Action: Allow
 
-This scheme guarantees that the Internet traffic originating from different groups of users can be treated by the WFP without conflicts. For example, the tenant administrators might want to forbid all gambling activities for all users, and while for some users also the social sites should be barred, for some other users, such as for the marketing team, they should not be barred.
+- Name: Ban Social, Entertainment and Gambling
+- Categories: Gambling, Entertainment, Social
+- FQDN: https://www.**microsoft**.com/, https://www.**mycorporate**.**/, **gambling**,...
+- Action: Block
 
-The smaller the priority value, the sooner the IASP is applied to the traffic; therefore, blocking actions with the small priority values will filter out the corresponding traffic. This also means that the IASP with allowed actions will generally have smaller priorities than the corresponding block actions; for example, when the tenant wants to block access to social media for all user groups except the marketing team.
+## Internet Access Security Profiles (IASP)
 
-The last missing piece of this mechanism is the link between the IASP and the user groups. This is important because it is implemented through the well-established construct of Conditional Access Policy. The tenant administrator can now create CAPs such as the following, with the only restrictions being that each of these CAPs can only be assigned one Internet Access Security Profile (IASP) and that their action must be set to allow:
+Internet Access Security Profiles (IASP) are collections of web filtering policies that will be applied to 
+sets of groups of users within a tenant. Each IASP specifies its own unique value of priority between 
+0 and 65000, and each arranges its set of WFP by specifying for each a number that indicates its relative 
+priority with respect to the other WFP within the same IASP.
 
+Examples of IASP are the following:
 
-CAP Name: Internet Marketing
-Group: Marketing
-Type: GSA-Internet
-Internet Access Security Profile (IASP): Marketing Work
-Action: Allow
-CAP Name: Internet All Employees
-Group: Employee
-Type: GSA-Internet
-Internet Access Security Profile (IASP): General Work
-Action: Allow
-The restriction that the Internet Access Security Profile (IASP) and that their action must be set to allow may appear counterintuitive and somehow redundant, as the WFPs on the IASPs already express their own action as Action: Block or Action: Allow.
+- IASP Name: Marketing Work
+- Priority: 500
+    - WFP-Priority-100: Social
+    - WFP-Priority-200: Work
+    - WFP-Priority-300: Ban Social, Entertainment and Gambling
 
-The action specified at the Conditional Access Policy level for the GSA-Internet traffic is a switch that either blocks completely the traffic for that group of users when set to Block or allows the traffic to be forwarded from the GSA client to the set of web filtering policies specified for the corresponding Internet Access Security Profile (IASP). This means that if set to block all the Internet traffic for the users with the GSA client that are part of the Entra group, i.e., marketing, it will be blocked, and therefore they will not be able to reach any resource on the Internet at all.
-The action specified at the web filtering policy instead is applied when the traffic routed from the GSA client for the specified group of Entra users through the Entra Secure Edge matches the definitions in the Category or FQDN specifiers.
-The attentive reader at this point might wonder how this Global Secure Internet Access feature of Microsoft Entra can possibly be identity-centric and adhere to the tenets of Zero Trust. On the surface it might seem that this feature might actually work at the network level whereby the traffic is routed through the GSA over to the Microsoft Entra Security Edge, and then it is inspected to decide which traffic must be filtered out and therefore prevented from reaching out to its destination on the Internet.
+- IASP Name: General Work
+- Priority: 600
+    - WFP-Priority-200: Work
+    - WFP-Priority-300: Ban Social, Entertainment and Gambling
 
-This model is almost right but misses one very important detail: How can the Microsoft Entra Security Edge determine which set of web filtering policies should be applied to the traffic that it receives from a specific GSA client?
+This scheme guarantees that the Internet traffic originating from different groups of users can be treated by the WFP without conflicts. 
+For example, the tenant administrators might want to forbid all gambling activities for all users, and while for some users also 
+the social sites should be barred, for some other users, such as for the marketing team, they should not be barred.
 
-User log in to their managed devices with their Microsoft Entra ID identity, which is also the identity used by the GSA Client installed on the device. During the authentication of the GSA Client on the corresponding tenant the authentication token that are assigned to the GSA Client will be used to acquire access tokens, which also have an expiration time of about 1 hour, with the expanded claims for the Microsoft Entra Security Edge. These access tokens hold the information that Microsoft Entra needs to deteremine which web filtering policies should be applied to the traffic that it receives from a specific GSA client.
+The smaller the priority value, the sooner the IASP is applied to the traffic; therefore, blocking actions with the small priority values 
+will filter out the corresponding traffic. This also means that the IASP with allowed actions will generally have smaller priorities than 
+the corresponding block actions. For example, when the tenant wants to block access to social media for all user groups except the marketing team.
 
-The result of this mechanism is the oveall solution satisfy the requirement of being identity-centric and also the Zero Trust tenet of continual verification.
+The last missing piece of this mechanism is the link between the IASP and the user groups; this is important because it is implemented 
+through the well-established construct of Conditional Access Policy. The tenant administrator can now create CAPs such as the following, 
+with the only restrictions being that each of these CAP can only be assigned one Internet Access Security Profile (IASP) and that their 
+action must be set to Alloq.
 
+- CAP Name: Internet Marketing
+- Group: Marketing
+- Type: GSA-Internet
+- Internet Access Security Profile (IASP): Marketing Work
+- Action: Allow
 
+- CAP Name: Internet All Employees
+- Group: Employee
+- Type: GSA-Internet
+- Internet Access Security Profile (IASP): General Work
+- Action: Allow
 
-Cost Aspects of the GSA
-Licensing overview
+The restriction that the Internet Access Security Profile (IASP) and that their action must be set to `Allow` may appear counterintuitive 
+and redundant, as the WFPs on the IASPs already express their own action as `Action: Block` or `Action: Allow`.
+
+The action specified at the Conditional Access Policy level for the GSA-Internet traffic is a switch that either: 
+
+- Blocks completely the traffic for that group of users to be forwarded from the GSA Clinet when set to Block 
+- Allows the traffic to be forwarded from the GSA client when set to Allow  
+
+This means that if set to block all the Internet traffic for the users with the GSA client that are part of the Entra group, 
+i.e., marketing, will be blocked, and therefore they will not be able to reach any resource on the Internet at all.
+
+The action specified at the Web Filtering Policy (wfp) instead is applied when the traffic routed from the GSA client 
+for the specified group of Entra users through the Entra Secure Edge matches the definitions in the Category or FQDN specifiers.
+
+### GSA Internnet Access as Zero-Trust compliant solution
+
+How can the Microsoft Entra Security Edge determine which set of web filtering policies should be applied to the traffic that 
+it receives from a specific GSA client?
+
+The attentive reader at this point might wonder how the Microsoft Entra Global Secure Internet Access can possibly be identity-centric 
+and adhere to the tenets of Zero Trust. On the surface, it might seem that the feature might work at the network level whereby 
+th0e traffic is routed through the GSA Client then over to the Microsoft Entra Security Edge, and  inspected to decide which 
+traffic must be filtered out and therefore be prevented from reaching out to its destination on the Internet. 
+
+This model is almost right but misses one very important detail. 
+
+Users log in to their managed devices with their Microsoft Entra ID identity; this identity used by the GSA Client installed on the device. 
+During the authentication of the GSA Client on the corresponding tenant the authentication token that are assigned to the GSA Client 
+will also be used to acquire access tokens. The access token have an expiration time of about 1 hour and hold the claims for the 
+Microsoft Entra Security Edge, information that Microsoft Entra needs to deteremine which web filtering policies should be applied 
+to the traffic that it receives from a specific GSA client.
+
+The overall outcome of this mechanism is that the GSA Internet Access solution satisfies the requirement of being identity-centric 
+and also the Zero Trust tenet of continual verification.
+
+---
+
+# Cost Aspects of the GSA
 
 Microsoft Entra Internet Access for Microsoft services capabilities are included in the following per-user licenses:
 
-Microsoft Entra ID P1
-Microsoft Entra ID P2
-Microsoft Entra Suite license
+1. Microsoft Entra ID P1
+2. Microsoft Entra ID P2
+3. Microsoft Entra Suite license
 
 
 
+---
 
-References
+#References
 
 Microsoft Entra Global Secure Access
 Microsoft Entra Private Access
