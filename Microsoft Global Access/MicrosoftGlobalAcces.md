@@ -426,6 +426,29 @@ and also the Zero Trust tenet of continual verification.
 
 ---
 
+# [Remote Network Locations with Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-remote-network-connectivity)  
+
+There are cases in which it si practical to have to manage the distribution of teh GSA Client to individual
+managed devices. One example may be the case in which the devices are permanetly located on a private 
+network, for examp,le the network of a branch-office. In thes cases the presence of the GSA Client may be 
+not necessary on each individual machine and the Remote Network Location option can be used to make
+things simpler.
+
+In this mode of operation teh GSA Clinet software is intall on chose Network devices through which the 
+network traffic must be routed to reach the Secure Access Edge. The details of the configuration on the 
+tenant and the working priciple of the GSA solution remain teh same, however the set up of the GSA Client 
+software may require more effort on part of the netwok administrators.
+
+Another point worth mentioning in realtion to this mode of operation is the allowance of bandwith for the 
+access to the  Secure Access Edge and the licensing model. While in the case of individual install of the 
+GSA Client there is a per-user license with a clear-cut cost, in the a Remote Network Location a bulk-type
+licensing model is applied that grants bandwith based the estimated number of users on the remote network.
+
+All the details are in the relevant documentation for the readers that may be interested in exploring this
+scenarion more in depth.
+
+---
+
 # Cost Aspects of the GSA
 
 Microsoft Entra Internet Access for Microsoft services capabilities are included in the following per-user licenses:
@@ -433,8 +456,6 @@ Microsoft Entra Internet Access for Microsoft services capabilities are included
 1. Microsoft Entra ID P1
 2. Microsoft Entra ID P2
 3. Microsoft Entra Suite license
-
-
 
 ---
 
