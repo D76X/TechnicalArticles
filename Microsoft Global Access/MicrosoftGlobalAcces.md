@@ -202,43 +202,93 @@ The fllowing scenarios will be prevented by the Universal Tenant Restrictions:
 
 ---
 
-# Private Access
+# Global Secure Access: Private, Internet and Microsoft 365 Access
 
-The most distinctive fact about Private Access is that it is designed to work hand in hand with the Microsoft Entra Application Registrations (Apps), which in this context will be referred to as Private Access Applications.
+As discussed in the preceeding section GSA unified the governance of the access to resources
+from managed devices through the unified intergation of the following tools: 
 
-The overarching goal of Private Access is to allow organizations to replace their classic broad-access VPN with a completely identity-centric, zero-trust selective segmented access without overlaps.
+- The GSA Clinet that is installed on any managed device
+- The Access Policies that can be defined on the tenant of the managed device
+- A unified GSA Connector that, only in the case of access to private resources, must be installed on the target private netwok.
 
+It has also been said GSA manages the following types of traffic and access:
+
+- Private traffic
+- Internet traffic
+- Microsoft 365 traffic
+
+---
+
+# Private Access through GSA
+
+In this section the focus is on the case in which a managed device must be able to access resources
+maintaned on a private network under the following conditions:
+
+1. without having to setup or maintain a VPN, DMZ or a managed reverse proxy.
+2. acces must be granted only to compliant devices and users from anywhere and/or compliant networks based on identity-centric policies and conditions.
+3. acess governance myst be possible over any type of networjk traffic and not only HTT(S), therefore covering also UDP/TCP and more.
+
+Private Access is that it is designed to work hand in hand with the Microsoft Entra Application Registrations (Apps), 
+which in this context will be referred to as Private Access Applications. The overarching goal of Private Access is 
+to allow organizations to replace their classic broad-access VPN with a completely identity-centric, zero-trust 
+selective segmented access without overlaps.
 
 There are two types of Private Access Applications:
 
-Classic Microsoft Entra Application Registrations for Private Access: each representing a segment.
-Quick Access Application: a single broad traffic segment.
-In the context of Private Access, the specification of each non-overlapping segment is based on the following data:
+1. Microsoft Entra Application Registrations for Private Access:
 
-IP, IP ranges or CIDR
-Fully Qualified Domain Name (FQDN)
-Port ranges
+Eeach App Regoistration represents a granular access segment, 
+for example RDP to a specific VM on the private nework.
 
+The attributes of each App Registration specification are:
 
+- IP, IP ranges or CIDR
+- Fully Qualified Domain Name (FQDN)
+- Port ranges
 
-Private Access covers any traffic built on top of the network protocols UDP and TCP; The important detail is that PA analyzes the traffic as LAYER-4 (Transport Layer) rather than LAYER-7 (Application Layer); therefore, it is not a substitute for Azure Application Proxy, as some of the capabilities that are available as part of the agent that powers Azure Application Proxy use the application layer.
+The definition of these App Registration must be non-overlapping, therefore each must control 
+the access through a specific combination of these attributes.
 
-A notable example is the Single-Sign-On (SSO), which is a feature of the Azure Application Proxy but not of the Private Access.
+2. Quick Access Application: 
 
+It is possible to have single broad traffic accces segment that spares the dministrative cost 
+of having to define an Microsoft Entra Application Registrations with a distinct combination
+of attributes for each sinlge resource individually, when it is acceeptable to consolidate some
+access to network resources through teh same App Registration unit.
 
+Private Access covers any traffic built on top of the network protocols UDP and TCP and analyzes 
+the traffic as `LAYER-4 (Transport Layer)` rather than `LAYER-7 (Application Layer)`; therefore, 
+it is not a substitute for Azure Application Proxy, as some of the capabilities that are available 
+as part of the agent that powers Azure Application Proxy use the application layer. A notable example 
+is the Single-Sign-On (SSO), which is a feature of the Azure Application Proxy but not of the Private Access.
 
-RDP
-SSH
-FTP
-TCP
-UDP
-SMB
-Printers
-others
+However, a replacement for the the Azure Application Proxy within GSA is discussed later in the 
+section dedicated to **the GSA Internet Access**.
 
-An important aspect of Private Access is how domain name resolution (DNS) is accomplished; this is important because it allows a GSAC to resolve private domains, whose records are on a private domain server owned by the organization and possibly internal to the corporate network, without having a reference to this private DNS service or even being actually tunneled to the corporate network at all.
+The following is a list of protocols that are covered by the GSA Private Access:
 
-Internet Access
+- RDP
+- SSH
+- FTP
+- TCP
+- UDP
+- SMB
+- Printer procols
+- others..
+
+### GSA Private Access Domain Resolition 
+
+An important aspect of Private Access is how domain name resolution (DNS) is accomplished; this is important 
+because it allows a GSAC to resolve private domains whose records are on a private domain server owned by the 
+organization and possibly internal to the corporate network, without having a reference to this private DNS 
+service or even being actually tunneled to the corporate network at all.
+
+It is in fact natural to expect that a user on a manged device on the public Internet, for example a remote
+employee with a managed device with the GSA Client, 
+
+---
+
+# Internet Access through GSA
 
 This works for all the traffic at LAYER-7 (Application Layer); therefore, HTTP(S) and the controls are based on Web Filtering Policies (WFP) that are defined in Microsoft Entra ID.
 
