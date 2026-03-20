@@ -1,6 +1,6 @@
 # Global Secure Access with Microsoft Entra
 
-![Global Secure Acces Architecture](./20260311-MicrosoftGlobalSecureAccess-01.jpg)
+![Global Secure Private Acces Architecture](./20260311-MicrosoftGlobalSecurePrivateAccess-01.jpg)
 
 This article expands on the more specific case described by the blog post [Secure Access to Applications with Azure](https://www.neteye-blog.com/2025/09/secure-access-to-applications-with-azure/), 
 where the main aim is to secure access to an on-premises application using Microsoft Entra Application Proxy.
@@ -221,6 +221,8 @@ It has also been said GSA manages the following types of traffic and access:
 
 # Private Access through GSA
 
+![Global Secure Private Acces Architecture](./20260311-MicrosoftGlobalSecurePrivateAccess-01.jpg)
+
 In this section the focus is on the case in which a managed device must be able to access resources
 maintaned on a private network under the following conditions:
 
@@ -312,6 +314,8 @@ intrested in the thourough technical details to the documentation.
 ---
 
 # Internet Access through GSA
+
+![Global Secure Internet Acces Architecture](./20260311-MicrosoftGlobalSecureInternetAccess-01.jpg)
 
 The Internet Access through GSA works for all the traffic at LAYER-7 (Application Layer); therefore, HTTP(S) and 
 the controls are based on **Web Filtering Policies (WFP)** that are defined in Microsoft Entra ID.
