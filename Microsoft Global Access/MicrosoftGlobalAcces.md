@@ -434,18 +434,19 @@ Microsoft Entra Internet Access for Microsoft services capabilities are included
 
 ---
 
-#References
+# References
 
-Microsoft Entra Global Secure Access
-Microsoft Entra Private Access
-Microsoft Entra Internet Access for all apps
+[Secure Access to Applications with Azure - NetEy Blog](https://www.neteye-blog.com/2025/09/secure-access-to-applications-with-azure/)  
 
+[Microsoft Entra Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/)  
+[Microsoft Entra Private Access](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-private-access)  
+[Microsoft Entra Internet Access for all apps](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-internet-access)  
 
-Global Secure Access Remote Network Connectivity
-Common remote network connectivity scenarios
+[Global Secure Access Remote Network Connectivity](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-remote-network-connectivity#common-remote-network-connectivity-scenarios)  
+[Common remote network connectivity scenarios](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-remote-network-connectivity#common-remote-network-connectivity-scenarios) 
 
-Microsoft Entra private network connectors
+[Microsoft Entra private network connectors](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-connectors)  
 
-Microsoft Entra Security Service Edge Overview - John Savill - YouTube
-Deep Dive on Microsoft Entra Private Access - John Savill - YouTube
-Deep Dive on Microsoft Entra Internet Access - John Savill - YouTube
+[Microsoft Entra Security Service Edge Overview - John Savill - YouTube](https://youtu.be/4RVkbKjeU10?si=02Em8uNbebj9r3wm)  
+[Deep Dive on Microsoft Entra Private Access - John Savill - YouTube](https://youtu.be/RsxxsEzQhrM?si=DIewOi79IaAOVdHT)  
+[Deep Dive on Microsoft Entra Internet Access - John Savill - YouTube](https://youtu.be/844s2bpA1aU?si=d1I31JkOyFvHOnwX)  
