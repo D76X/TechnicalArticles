@@ -83,28 +83,126 @@ and decryption, whereas networking is important to get fast connectivity to the 
 
 ---
 
-The Access Policy resource in Microsoft Entra ID has been updated so that, during its definition, one of the selectable options for the target of the access policy is the Global Secure Access. By selecting the Global Secure Access as the target of an access policy, the options available for selection at the step of the traffic profiles to which the policy will be applied will be the following:
+# Microsoft Entra ID Access Policy and Global Secure Access
 
-Microsoft 365 traffic
-Internet traffic
-Private traffic
-The GSAC establishes dedicated channels to the Microsoft Entra Security Edge for each of these three types, and the SSE will apply to each traffic the corresponding set of controls and policies.
+The defining property of the Global Secure Access solution is its thight integration with the Microsoft Entra ID Access Policy feature.
 
-Tenant restrictions defined on the tenant of the employee to whom the managed device is given are enforced through the GSAC at the operating system level. This means that it will be impossible to circumvent these restrictions on the managed device.
+There are essentially three distinct types of traffic that can be overseen by the Global Secure Access solution.
 
-Adaptive Access: Enable Global Secure Access signaling in Conditional Access
+- Private traffic: any traffic that must reach a private network either on-premise or in any of cloud infrastructure.
+- Internet traffic: any traffic that must reach resources available on the public Internet including SaaS services by any provider.
+- Microsoft 365 traffic: any traffic to SaaS services specific to the Microsoft 365 ecosystem.
 
-Named Locations is a tenant-level Microsoft Entra ID feature in which locations can be defined in different ways, such as ranges of IP addresses or entire geographical regions, and then used in the definition of access policies to apply traffic controls to allow, disallow, or require further actions such as the typical MFA interaction.
+The Access Policy resource in Microsoft Entra ID has been updated so that, during its definition, the available options 
+for the target traffic of the access policy include the Global Secure Access option. By selecting the Global Secure Access 
+option as the target of an access policy, the options available for selection at the step of the traffic profiles to which 
+the policy will be applied are expanded to the corresponding:
 
-The Enable Global Secure Access signaling in Conditional Access setting enhances and simplifies the use of locations in access policy definitions; It is possible to select all compliant network locations, which in practice ????
+- Private traffic
+- Internet traffic
+- Microsoft 365 traffic
 
-This compliant network check is specific to the tenant in which it is configured. For example, if you define a Conditional Access policy requiring compliant network in contoso.com, only users with the Global Secure Access or with the Remote Network configuration are capable of passing this control. A user from fabrikam.com will not be able to pass contoso.com's compliant network policy.
+The GSA Client establishes dedicated channels to the Microsoft Entra Security Edge for each of these three types, 
+and the SSE will apply to each traffic the corresponding set of controls and policies.
+
+---
+
+# Tenant Restrictions and Named Location
+
+Named Locations is a tenant-level Microsoft Entra ID feature in which locations can be defined in different ways, 
+such as ranges of IP addresses or entire geographical regions, and then used in the definition of access policies 
+to apply traffic controls to allow, disallow, or require further actions such as the typical MFA interaction.
+
+Administrators of a Micrsoft Entra Tenant ca use this meachanism to control which origins and targets are allowed 
+for any traffic to the resources controlled by the tenant. One of the drawbacks of controlling the allowed origin 
+of any traffic through Named Locations is the administrative cost of setting up and maintaning the list of named 
+locations, but ingeneral this instrument is more limited in its capabilities when compared to 
+
+- Compliant network checks
+- Tenant Restrictions
+- Universal Tenant Restrictions with Global Secure Access
+
+## [Compliant network checks in Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-compliant-network)   
+
+This feature is entirely based on the integration og the Global Secure Access and the Conditional Acess 
+and prevents malicious access from managed devices to: 
+
+- Microsoft apps 
+- third-party SaaS apps 
+- private line-of-business (LoB) apps 
+
+This is achived by specifying Conditional Acess Policies using multiple conditions 
+in any combination of required factors:
+
+- strong factor authentication, i.e. required MFA  
+- device compliance
+- location
+- other factors.. 
+
+This compliant network feature makes it easier for administrators to manage access policies:
+
+1. without having to maintain a list of egress IP addresses
+2. removing the requirement to hairpin traffic through organization's VPN in order to maintain source IP anchoring and apply IP-based Conditional Access policies
+
+For example, if you define a Conditional Access policy requiring compliant network in `contoso.com`, 
+only users with the Global Secure Access or with the configuration from a compliant Remote Network 
+are capable of passing this control. A user from `fabrikam.com` will not be able to pass contoso.com's 
+compliant network policy from the managed device or from within any device in a non compliant Remote 
+Network.
 
 The compliant network is different than IPv4, IPv6, or geographic locations you might configure in Microsoft Entra. Administrators are not required to review and maintain compliant network IP addresses/ranges, strengthening the security posture and minimizing the administrative overhead.
 
+---
 
+## [Tenant Restrictions and Universal Tenant Restrictions](https://learn.microsoft.com/en-us/entra/external-id/tenant-restrictions-v2#step-3-enable-tenant-restrictions-on-windows-managed-devices)  
 
-Private Access
+Tenant restrictions offer a better way to achieve the same goal, and more. 
+
+These restriction are defined on the tenant and for any managed devices and corresponding tenant users.
+
+The Universal Tenant Restrictions are an inprovement over the plain tenant restriction per tenant and user
+that can be applied to the managed device through the GSA Client which works at the operating system level 
+making  them impossible to circumvent by any user of the managed device.
+
+There are two types of Tenant Restrictions:
+
+1. Authentication plane protection 
+
+This type fo tenant restrictions block sign-ins that use external identities. 
+
+For example, they prevent a malicious insider from leaking data over external email by 
+didallowing signing in to their malicious tenant from the manage device. 
+
+2. Data plane protection 
+
+This prevents attacks that bypass authentication. 
+
+For example, an attacker might try to allow access to a malicious tenant's apps by anonymously 
+joining a Teams meeting or anonymously accessing SharePoint files. Or the attacker might copy 
+an access token from a device in a malicious tenant and import it to your organizational device. 
+Data plane protection in tenant restrictions forces the user to authenticate for attempts to 
+access a resource. Data plane protection blocks access if authentication fails.
+
+The Authentication plane protection feature of Tenant restriction is expanded by its integration
+with Globals Secure Access as [Universal Tenant Restrictions](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-universal-tenant-restrictions)
+
+The Global Secure Access tags all traffic no matter the operating system, browser, or device form factor
+including any remote network connectivity (explained later). Global Secure Access adds policy information 
+for tenant restrictions to the authentication plane's network traffic that reaches the SSE.
+
+As a result, users who use managed devices and networks in your organization must use only authorized 
+external tenants; therefore this feature prevents data exfiltration for any application integrated with 
+your Microsoft Entra ID tenant through single sign-on (SSO).
+
+The fllowing scenarios will be prevented by the Universal Tenant Restrictions:
+
+- user with a managed device tries to access a Microsoft Entra-integrated app with an unsanctioned external identity
+- Authentication Level Protection: the user tries to replay any Authentication tokens copied over from other devices to the client with the Global Secure Access client or via remote networks.
+- Data Plane Protection: the user tries to replay any  Access tokens copied over from other devices to the client with the Global Secure Access client or via remote networks.
+
+---
+
+# Private Access
 
 The most distinctive fact about Private Access is that it is designed to work hand in hand with the Microsoft Entra Application Registrations (Apps), which in this context will be referred to as Private Access Applications.
 
