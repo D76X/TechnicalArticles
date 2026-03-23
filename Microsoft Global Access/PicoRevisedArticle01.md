@@ -30,7 +30,7 @@ Global Secure Access uses Microsoft's global network presence to connect users t
 
 The **Global Secure Access Client** is installed on managed endpoints and is responsible for forwarding supported traffic to the Global Secure Access service. It works at operating system level and is typically deployed and managed through endpoint management tools such as Microsoft Intune or another MDM solution.
 
-The client forwards traffic according to the enabled **traffic forwarding profiles** and the applicable policy configuration. This point is important: traffic handling depends on what profiles are enabled and what scenarios are supported, not simply on the presence of the client alone.【call_qqiVeij6mF4lmXIi1RzyE0lb-4】【call_GSyrj7jUAJiktG9K4OdUI2le-9】
+The client forwards traffic according to the enabled **traffic forwarding profiles** and the applicable policy configuration. This point is important: traffic handling depends on what profiles are enabled and what scenarios are supported, not simply on the presence of the client alone.
 
 At a high level, the client can participate in forwarding three traffic categories:
 
@@ -38,17 +38,17 @@ At a high level, the client can participate in forwarding three traffic categori
 - **Microsoft 365 traffic**
 - **Internet traffic**
 
-These traffic categories are then processed by the service according to Microsoft Entra policy, user context, device context, and the specific capabilities enabled in the tenant.【call_qqiVeij6mF4lmXIi1RzyE0lb-1】
+These traffic categories are then processed by the service according to Microsoft Entra policy, user context, device context, and the specific capabilities enabled in the tenant.
 
 ## The private network connector
 
-The **Microsoft Entra private network connector** is used for Microsoft Entra Private Access. It is a lightweight Microsoft-managed component installed on Windows Server systems that have line of sight to the private resources being published through the service.【call_rDTvDpF3n8ZdGwVN6DT0Qp9S-0】【call_rDTvDpF3n8ZdGwVN6DT0Qp9S-2】
+The **Microsoft Entra private network connector** is used for Microsoft Entra Private Access. It is a lightweight Microsoft-managed component installed on Windows Server systems that have line of sight to the private resources being published through the service.
 
-Like the Microsoft Entra Application Proxy connector, it uses an outbound-only communication model. No inbound firewall opening is required for the connector itself, because the connector initiates the connection to the Microsoft service.【call_rDTvDpF3n8ZdGwVN6DT0Qp9S-0】
+Like the Microsoft Entra Application Proxy connector, it uses an outbound-only communication model. No inbound firewall opening is required for the connector itself, because the connector initiates the connection to the Microsoft service.
 
-Connectors should be deployed redundantly on multiple Windows Servers. They are stateless, and Microsoft recommends using more than one connector for resilience and scale.【call_rDTvDpF3n8ZdGwVN6DT0Qp9S-0】
+Connectors should be deployed redundantly on multiple Windows Servers. They are stateless, and Microsoft recommends using more than one connector for resilience and scale.
 
-Connector performance depends more on request rate, payload size, CPU, and network capacity than on raw user or session count. Microsoft states that, with standard web traffic, an average machine can handle around 2,000 requests per second.【call_rDTvDpF3n8ZdGwVN6DT0Qp9S-0】
+Connector performance depends more on request rate, payload size, CPU, and network capacity than on raw user or session count. Microsoft states that, with standard web traffic, an average machine can handle around 2,000 requests per second.
 
 ---
 
@@ -62,14 +62,14 @@ Global Secure Access supports policy-driven handling of three traffic categories
 - **Internet traffic**: traffic to internet and SaaS destinations
 - **Microsoft traffic**: traffic to supported Microsoft 365 services
 
-This model allows organizations to apply identity-aware controls to network access, not only to cloud application sign-in events. Microsoft refers to this as **Universal Conditional Access** through Global Secure Access.【call_GSyrj7jUAJiktG9K4OdUI2le-6】
+This model allows organizations to apply identity-aware controls to network access, not only to cloud application sign-in events. Microsoft refers to this as **Universal Conditional Access** through Global Secure Access.
 
 In practice, Conditional Access can be used with Global Secure Access to require conditions such as:
 
 - multifactor authentication
 - compliant device
 - acceptable sign-in risk
-- compliant network, where supported【call_GSyrj7jUAJiktG9K4OdUI2le-6】【call_GSyrj7jUAJiktG9K4OdUI2le-2】
+- compliant network, where supported
 
 ---
 
@@ -82,26 +82,26 @@ Global Secure Access improves this area with features such as:
 - **Compliant network**
 - **Universal Tenant Restrictions**
 
-These features reduce dependency on static IP-based trust models and improve policy consistency across managed endpoints and supported network paths.【call_GSyrj7jUAJiktG9K4OdUI2le-1】【call_GSyrj7jUAJiktG9K4OdUI2le-2】
+These features reduce dependency on static IP-based trust models and improve policy consistency across managed endpoints and supported network paths.
 
 ## Compliant network
 
-[Compliant network check in Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-compliant-network) allows administrators to require that access comes through the Global Secure Access service path for the correct tenant.【call_GSyrj7jUAJiktG9K4OdUI2le-2】
+[Compliant network check in Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-compliant-network) allows administrators to require that access comes through the Global Secure Access service path for the correct tenant.
 
 This helps in two main ways:
 
 1. it reduces the need to maintain trusted egress IP ranges
-2. it removes the need to hairpin traffic through VPN infrastructure only to preserve IP-based trust for Conditional Access【call_GSyrj7jUAJiktG9K4OdUI2le-2】
+2. it removes the need to hairpin traffic through VPN infrastructure only to preserve IP-based trust for Conditional Access
 
-For example, if a tenant requires compliant network, only devices using the Global Secure Access client or users behind a configured remote network can satisfy that control for supported scenarios.【call_GSyrj7jUAJiktG9K4OdUI2le-2】
+For example, if a tenant requires compliant network, only devices using the Global Secure Access client or users behind a configured remote network can satisfy that control for supported scenarios.
 
-**Important limitation:** compliant network check is currently **not supported for Private Access applications**.【call_GSyrj7jUAJiktG9K4OdUI2le-3】
+**Important limitation:** compliant network check is currently **not supported for Private Access applications**.
 
 ## Tenant Restrictions and Universal Tenant Restrictions
 
 [Tenant Restrictions v2](https://learn.microsoft.com/en-us/entra/external-id/tenant-restrictions-v2#step-3-enable-tenant-restrictions-on-windows-managed-devices) help control how managed users and devices interact with external Microsoft Entra tenants.
 
-Universal Tenant Restrictions extend this model by using Global Secure Access to tag traffic consistently across supported clients and remote network connectivity.【call_GSyrj7jUAJiktG9K4OdUI2le-1】
+Universal Tenant Restrictions extend this model by using Global Secure Access to tag traffic consistently across supported clients and remote network connectivity.
 
 This improves enforcement in two areas:
 
@@ -109,9 +109,9 @@ This improves enforcement in two areas:
    This helps block sign-in attempts that use unauthorized external identities.
 
 2. **Data plane protection**  
-   This helps reduce token replay and unauthorized resource access in supported Microsoft-integrated scenarios.【call_GSyrj7jUAJiktG9K4OdUI2le-1】【call_GSyrj7jUAJiktG9K4OdUI2le-2】
+   This helps reduce token replay and unauthorized resource access in supported Microsoft-integrated scenarios.
 
-A practical benefit is that organizations can reduce the risk of data exfiltration to unauthorized external tenants or personal accounts while keeping policy management centralized.【call_GSyrj7jUAJiktG9K4OdUI2le-0】【call_GSyrj7jUAJiktG9K4OdUI2le-1】
+A practical benefit is that organizations can reduce the risk of data exfiltration to unauthorized external tenants or personal accounts while keeping policy management centralized.
 
 ---
 
@@ -123,7 +123,7 @@ Global Secure Access provides a unified model for managing access from managed d
 - **Conditional Access**
 - **traffic forwarding profiles**
 - **security policies**
-- **private network connectors**, where Private Access is involved【call_qqiVeij6mF4lmXIi1RzyE0lb-4】【call_rDTvDpF3n8ZdGwVN6DT0Qp9S-0】
+- **private network connectors**, where Private Access is involved
 
 At a high level, Global Secure Access supports:
 
@@ -148,21 +148,21 @@ The main design goals are:
 3. support non-HTTP protocols as well as web traffic
 4. apply segmented access to specific private destinations
 
-Microsoft Entra Private Access is Microsoft's ZTNA capability for private resources.【call_qqiVeij6mF4lmXIi1RzyE0lb-2】
+Microsoft Entra Private Access is Microsoft's ZTNA capability for private resources.
 
 ## Private Access application model
 
 Private Access works with **enterprise applications** that act as containers for the private resources that must be published through the service. Microsoft documentation describes two main models:
 
 1. **Quick Access**
-2. **Global Secure Access applications**【call_qqiVeij6mF4lmXIi1RzyE0lb-2】【call_qqiVeij6mF4lmXIi1RzyE0lb-9】
+2. **Global Secure Access applications**
 
 These applications define private access segments using combinations of:
 
 - IP addresses or IP ranges
 - FQDNs
 - protocols
-- ports【call_qqiVeij6mF4lmXIi1RzyE0lb-9】
+- ports
 
 This allows organizations to move from broad VPN access toward more selective per-app or per-segment access.
 

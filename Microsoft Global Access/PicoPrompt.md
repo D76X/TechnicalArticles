@@ -74,13 +74,16 @@ What needs work:
    - Microsoft documentation describes **enterprise applications / Global Secure Access apps / Quick Access** for Private Access, not standard app registrations in the way you present them.
 
 5. **Remote network section has a major issue**
+
    - Current Microsoft limitation: **Private Access traffic can only be acquired with the Global Secure Access client**.
    - **Remote networks can't be assigned to the Private Access traffic forwarding profile**.
 
 6. **Compliant network section needs one limitation**
+
    - **Compliant network check is currently not supported for Private Access applications**.
 
 7. **Internet Access is not a replacement for Application Proxy**
+
    - That framing is wrong.
    - Internet Access is SWG for internet/SaaS traffic.
    - Private Access is ZTNA for private resources.
@@ -89,6 +92,7 @@ What needs work:
 ### What is correct and well aligned
 
 These parts are broadly right:
+
 - GSA unifies Private Access and Internet Access in the Entra admin center.
 - Private network connectors are outbound and stateless.
 - Connector scaling is about requests/payload more than session count.
@@ -97,6 +101,7 @@ These parts are broadly right:
 ### Spelling quality
 
 Yes, there are **many spelling mistakes**. Repeated examples:
+
 - `Acces` -> `Access`
 - `conisderably` -> `considerably`
 - `bandwith` -> `bandwidth`
@@ -114,6 +119,7 @@ This needs a full proofreading pass before publication.
 Your Microsoft Learn references are relevant and strong.
 
 The John Savill YouTube references are also relevant to the topic and appropriate as supporting references:
+
 - SSE overview
 - Internet Access deep dive
 - Private Access deep dive
@@ -132,7 +138,10 @@ Before sending to your supervisor:
 
 ### Important note
 
-I attempted to produce the `.md` review file for you, but the file-generation shell tool failed because the bash session could not start in this environment. So I can still help in two ways:
+I attempted to produce the `.md` review file for you, but the file-generation shell tool failed 
+because the bash session could not start in this environment. 
+
+So I can still help in two ways:
 
 1. **I can paste the full markdown review in my next message**, ready for you to save as a file.
 2. **I can produce a cleaned-up revised version of the article text section by section**.
