@@ -175,7 +175,7 @@ The difference is important:
 - **Application Proxy** is focused on publishing web applications and can provide application-layer capabilities such as integrated web SSO scenarios.
 - **Private Access** is designed for private resource access more generally and can cover TCP- and UDP-based scenarios beyond HTTP and HTTPS.
 
-Because of this, Private Access is **not** a universal replacement for every Application Proxy scenario, and Internet Access is **not** a replacement for Application Proxy either.【call_qqiVeij6mF4lmXIi1RzyE0lb-1】【call_qqiVeij6mF4lmXIi1RzyE0lb-2】
+Because of this, Private Access is **not** a universal replacement for every Application Proxy scenario, and Internet Access is **not** a replacement for Application Proxy either.
 
 ## Protocol coverage
 
@@ -193,7 +193,7 @@ This is one of the main reasons why it is useful as a modern replacement for man
 
 An important aspect of Private Access is **private name resolution**.
 
-Remote users often need to resolve internal names even when they are not directly connected to the corporate network in the traditional VPN sense. Microsoft Entra Private Access addresses this through a service-assisted model in which the client, the service, the connector, and the configured private DNS settings work together to resolve private names securely.【call_qqiVeij6mF4lmXIi1RzyE0lb-7】
+Remote users often need to resolve internal names even when they are not directly connected to the corporate network in the traditional VPN sense. Microsoft Entra Private Access addresses this through a service-assisted model in which the client, the service, the connector, and the configured private DNS settings work together to resolve private names securely.
 
 The most important architectural point is this:
 
@@ -208,14 +208,14 @@ This topic has important implementation details, so the Microsoft documentation 
 
 ![Global Secure Internet Access Architecture](./20260311-MicrosoftGlobalSecureInternetAccess-01.jpg)
 
-Microsoft Entra Internet Access is the **identity-aware Secure Web Gateway** part of Global Secure Access. It is used to control user access to internet and SaaS destinations through centrally managed policies.【call_qqiVeij6mF4lmXIi1RzyE0lb-1】
+Microsoft Entra Internet Access is the **identity-aware Secure Web Gateway** part of Global Secure Access. It is used to control user access to internet and SaaS destinations through centrally managed policies.
 
 ## Web filtering policies
 
 Web filtering policies define rules for internet access. These rules can be based on:
 
 - web categories
-- FQDNs【call_GSyrj7jUAJiktG9K4OdUI2le-0】
+- FQDNs
 
 Examples include:
 - allowing access to selected business sites
@@ -224,7 +224,7 @@ Examples include:
 
 ## Security profiles
 
-Internet security policies are grouped into **security profiles**. These profiles allow administrators to apply a policy set to selected traffic in a structured and scalable way. Baseline and custom profiles are both relevant depending on the design scenario.【call_GSyrj7jUAJiktG9K4OdUI2le-5】【call_GSyrj7jUAJiktG9K4OdUI2le-9】
+Internet security policies are grouped into **security profiles**. These profiles allow administrators to apply a policy set to selected traffic in a structured and scalable way. Baseline and custom profiles are both relevant depending on the design scenario.
 
 ## Identity-centric policy enforcement
 
@@ -234,7 +234,7 @@ This means the service can apply different internet access controls based on:
 - user group
 - device state
 - Conditional Access conditions
-- assigned security profile【call_GSyrj7jUAJiktG9K4OdUI2le-5】【call_GSyrj7jUAJiktG9K4OdUI2le-6】
+- assigned security profile
 
 This is what makes the solution align with Zero Trust principles rather than acting as a traditional location-based web proxy.
 
@@ -253,14 +253,14 @@ However, the scope of remote networks must be described carefully.
 At the time of writing:
 
 - **Private Access traffic can only be acquired with the Global Secure Access client**
-- **remote networks cannot be assigned to the Private Access traffic forwarding profile**【call_GSyrj7jUAJiktG9K4OdUI2le-3】
+- **remote networks cannot be assigned to the Private Access traffic forwarding profile**
 
 So remote network connectivity should not be described as a replacement for the client in Private Access scenarios.
 
 Remote networks are more relevant for:
 - Microsoft traffic scenarios
 - internet traffic scenarios
-- tenant-wide security policy application in supported cases【call_GSyrj7jUAJiktG9K4OdUI2le-0】【call_GSyrj7jUAJiktG9K4OdUI2le-5】
+- tenant-wide security policy application in supported cases
 
 ---
 
@@ -268,17 +268,11 @@ Remote networks are more relevant for:
 
 Licensing for Global Secure Access should be verified carefully before implementation.
 
-Microsoft states that users need **Microsoft Entra ID P1 or P2** to use Microsoft Entra Private Access and Microsoft Entra Internet Access in general.【call_qqiVeij6mF4lmXIi1RzyE0lb-1】
+Microsoft states that users need **Microsoft Entra ID P1 or P2** to use Microsoft Entra Private Access and Microsoft Entra Internet Access in general.
 
 Feature-specific licensing may still vary. For example:
 - remote network connectivity has its own conditions
-- some capabilities depend on additional licensing or feature availability【call_GSyrj7jUAJiktG9K4OdUI2le-0】【call_GSyrj7jUAJiktG9K4OdUI2le-4】
-
-The practical recommendation is simple:
-
-- verify licensing early in the design phase
-- verify current feature availability before committing to the architecture
-- avoid assuming that one license statement covers all GSA capabilities
+- some capabilities depend on additional licensing or feature availability
 
 ---
 
@@ -287,19 +281,19 @@ The practical recommendation is simple:
 Before adopting Global Secure Access in production, it is useful to keep a few current limitations in mind:
 
 - Private Access is not a drop-in replacement for every Application Proxy scenario
-- compliant network check is currently not supported for Private Access applications【call_GSyrj7jUAJiktG9K4OdUI2le-3】
-- remote networks cannot currently acquire Private Access traffic【call_GSyrj7jUAJiktG9K4OdUI2le-3】
-- feature behavior and licensing should always be validated against current Microsoft documentation【call_qqiVeij6mF4lmXIi1RzyE0lb-1】
+- compliant network check is currently not supported for Private Access applications
+- remote networks cannot currently acquire Private Access traffic
+- feature behavior and licensing should always be validated against current Microsoft documentation
 
 ---
 
 # Conclusion
 
-Global Secure Access is an important step in Microsoft's broader Zero Trust strategy. It brings together private access, internet access, and Microsoft traffic control under a single identity-aware service model.【call_qqiVeij6mF4lmXIi1RzyE0lb-1】
+Global Secure Access is an important step in Microsoft's broader Zero Trust strategy. It brings together private access, internet access, and Microsoft traffic control under a single identity-aware service model.
 
 For architects, the main value is not only feature consolidation, but the shift from broad network trust to policy-driven, segmented, identity-centric access.
 
-Microsoft Entra Private Access is especially relevant where organizations want to reduce dependency on traditional VPN patterns for private resource access. Microsoft Entra Internet Access extends the same architectural direction to internet and SaaS traffic through identity-aware Secure Web Gateway controls.【call_qqiVeij6mF4lmXIi1RzyE0lb-1】【call_qqiVeij6mF4lmXIi1RzyE0lb-2】
+Microsoft Entra Private Access is especially relevant where organizations want to reduce dependency on traditional VPN patterns for private resource access. Microsoft Entra Internet Access extends the same architectural direction to internet and SaaS traffic through identity-aware Secure Web Gateway controls.
 
 The most important design principle is to understand the boundaries of each capability clearly:
 - Private Access for private resources
@@ -310,19 +304,19 @@ Used correctly, Global Secure Access can simplify access architecture, improve s
 
 # References
 
-[Secure Access to Applications with Azure - NetEye Blog](https://www.neteye-blog.com/2025/09/secure-access-to-applications-with-azure/)【call_RiSlc313dKYXHA1mVdSkvElE-0】
+[Secure Access to Applications with Azure - NetEye Blog](https://www.neteye-blog.com/2025/09/secure-access-to-applications-with-azure/)
 
-[Microsoft Entra Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/)【call_qqiVeij6mF4lmXIi1RzyE0lb-0】  
-[What is Global Secure Access?](https://learn.microsoft.com/en-us/entra/global-secure-access/overview-what-is-global-secure-access)【call_qqiVeij6mF4lmXIi1RzyE0lb-1】  
-[Microsoft Entra Private Access](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-private-access)【call_qqiVeij6mF4lmXIi1RzyE0lb-2】  
-[Global Secure Access admin center quickstart](https://learn.microsoft.com/en-us/entra/global-secure-access/quickstart-access-admin-center)【call_qqiVeij6mF4lmXIi1RzyE0lb-4】  
-[Microsoft Entra private network connectors](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-connectors)【call_rDTvDpF3n8ZdGwVN6DT0Qp9S-0】  
-[How to configure connectors for Microsoft Entra Private Access](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-configure-connectors)【call_rDTvDpF3n8ZdGwVN6DT0Qp9S-2】  
-[Global Secure Access and Universal Tenant Restrictions](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-universal-tenant-restrictions)【call_GSyrj7jUAJiktG9K4OdUI2le-1】  
-[Enable Compliant Network Check with Conditional Access](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-compliant-network)【call_GSyrj7jUAJiktG9K4OdUI2le-2】  
-[Known Limitations for Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/reference-current-known-limitations)【call_GSyrj7jUAJiktG9K4OdUI2le-3】  
-[Learn about Universal Conditional Access Through Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-universal-conditional-access)【call_GSyrj7jUAJiktG9K4OdUI2le-6】  
-[Security guidance - Protect networks](https://learn.microsoft.com/en-us/entra/fundamentals/zero-trust-protect-networks)【call_GSyrj7jUAJiktG9K4OdUI2le-9】  
-[Microsoft Entra Security Service Edge Overview - John Savill - YouTube](https://www.youtube.com/watch?v=4RVkbKjeU10)【call_Vclc7m6qFSa2ZZybOa7vJFME-0】  
-[Deep Dive on Microsoft Entra Private Access - John Savill - YouTube](https://www.youtube.com/live/RsxxsEzQhrM)【call_Vclc7m6qFSa2ZZybOa7vJFME-6】  
-[Deep Dive on Microsoft Entra Internet Access - John Savill - YouTube](https://www.youtube.com/watch?v=844s2bpA1aU)【call_Vclc7m6qFSa2ZZybOa7vJFME-1】
+[Microsoft Entra Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/)
+[What is Global Secure Access?](https://learn.microsoft.com/en-us/entra/global-secure-access/overview-what-is-global-secure-access)
+[Microsoft Entra Private Access](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-private-access)
+[Global Secure Access admin center quickstart](https://learn.microsoft.com/en-us/entra/global-secure-access/quickstart-access-admin-center)
+[Microsoft Entra private network connectors](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-connectors)
+[How to configure connectors for Microsoft Entra Private Access](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-configure-connectors)
+[Global Secure Access and Universal Tenant Restrictions](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-universal-tenant-restrictions)
+[Enable Compliant Network Check with Conditional Access](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-compliant-network)
+[Known Limitations for Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/reference-current-known-limitations)
+[Learn about Universal Conditional Access Through Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-universal-conditional-access)
+[Security guidance - Protect networks](https://learn.microsoft.com/en-us/entra/fundamentals/zero-trust-protect-networks) 
+[Microsoft Entra Security Service Edge Overview - John Savill - YouTube](https://www.youtube.com/watch?v=4RVkbKjeU10)
+[Deep Dive on Microsoft Entra Private Access - John Savill - YouTube](https://www.youtube.com/live/RsxxsEzQhrM)
+[Deep Dive on Microsoft Entra Internet Access - John Savill - YouTube](https://www.youtube.com/watch?v=844s2bpA1aU)
