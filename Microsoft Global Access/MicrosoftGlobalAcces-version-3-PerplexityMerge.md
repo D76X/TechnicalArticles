@@ -487,8 +487,11 @@ consolidating policy management in the Microsoft Entra admin center.
 
 # References
 
-[Secure Access to Applications with Azure — NetEye Blog](https://www.neteye-blog.com/2025/09/secure-access-to-applications-with-azure/)
-[Microsoft Entra Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/)
-[What is Global Secure Access?](https://learn.microsoft.com/en-us/entra/global-secure-access/overview-what-is-global-secure-access)
-[Microsoft Entra Private Access](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-private-access)
-[Global Secure Access admin center quickstart](https://learn.microsoft.com/en-us/entra/global-secure-access/quickstart-access-admin-center)
+[Secure Access to Applications with Azure — NetEye Blog](https://www.neteye-blog.com/2025/09/secure-access-to-applications-with-azure/)  
+[Microsoft Entra Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/)  
+[What is Global Secure Access?](https://learn.microsoft.com/en-us/entra/global-secure-access/overview-what-is-global-secure-access)  
+[Microsoft Entra Private Access](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-private-access)  
+[Global Secure Access admin center quickstart](https://learn.microsoft.com/en-us/entra/global-secure-access/quickstart-access-admin-center)  
+[Microsoft Entra Security Service Edge Overview - John Savill - YouTube](https://www.youtube.com/watch?v=4RVkbKjeU10)  
+[Deep Dive on Microsoft Entra Private Access - John Savill - YouTube](https://www.youtube.com/live/RsxxsEzQhrM)  
+[Deep Dive on Microsoft Entra Internet Access - John Savill - YouTube](https://www.youtube.com/watch?v=844s2bpA1aU)  
