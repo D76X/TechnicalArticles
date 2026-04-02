@@ -22,8 +22,8 @@ Example holders include students, employees, and customers.
 Typically this would be the Wallet App installed on a person's (=the entity) mobile.
 A holder is usually, but not always, a subject of the verifiable credentials they hold.
 Holders store their credentials in **credential repositories** (i.e the Wallet App).
-Holders will **present** the verifiable credential so that they can be verified in order to grant them (the subject)
-some kind of access credentials to some resources.
+Holders will **present** the verifiable credential so that they can be verified 
+in order to grant them (the subject) some kind of access credentials to some resources.
 
 ### Issuer 
 
@@ -57,8 +57,14 @@ Other specifications might refer to the Verifier role as the **Relying Party**.
 
 ### Verifiable Data Registry
 
-A **Verifiable Data Registry is a role a system** might perform by **mediating** the creation and verification of identifiers, 
-keys, and other relevant data, such as verifiable credential schemas, revocation registries, issuer public keys, and so on, 
+A **Verifiable Data Registry is a role a system** might perform by **mediating** 
+the creation and verification of identifiers, keys, and other relevant data, such as: 
+
+- verifiable credential schemas
+- revocation registries
+- issuer of public keys
+- more
+
 which might be required to use verifiable credentials.
 
 In other words **a Verifiable Data Registry is a role a system is a mediator** among:
@@ -83,6 +89,14 @@ This includes checking that:
 
 Verification of a credential **does not imply evaluation of the truth of claims encoded in the credential**, 
 it only guarantees that the verifiable credentials are value, not true!
+
+This is why often Verifiable Credentils will be combined with **Identiy Proofing**, that is the **process** 
+that verify the identity the identity of the subject of the credential. The typical analogy is that of
+a driving license (the verifiable credential) on which some claims about a subject are printed 
+(claims on the verifiable credential, the driving licence), in which the officer who issues the driving
+luicense document verifies the identity of the subject to whom the verifiable credentials are issued,
+often by oher means of verifiable and authentifiable identification, i.e. passports or identity documents 
+issues to the subject by other authorities.
 
 ### Claim 
 
