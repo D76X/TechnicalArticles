@@ -43,8 +43,8 @@ one Credential Repository.
 
 ### Subject
 
-An entity about which claims are made. Example subjects include human beings, animals, and things. In many cases the holder of a verifiable credential is the subject.
-
+An entity about which claims are made. Example subjects include human beings, animals, and things. 
+In many cases the holder of a verifiable credential is the subject.
 
 ### Verifier
 
@@ -130,6 +130,12 @@ Is A thing with distinct and independent existence, such as a person, organizati
 
 A **DID** a **portable URL-based identifier**, also known as a DID, **associated with an entity**. 
 
+It is a URI resolvable to DID documents and it is composed of three parts: 
+
+- the scheme did 
+- a method identifier
+- a unique method-specific identifier specified by the DID method. 
+
 These identifiers are most often used in a verifiable credential and are associated with subjects 
 such that a verifiable credential itself **can be easily ported from one repository to another without the need to reissue the credential**. 
 
@@ -187,6 +193,12 @@ that has the capability (as defined by a DID method) to make changes to a DID do
 This capability is typically asserted by the control of a set of cryptographic keys used 
 by software acting on behalf of the controller, though it might also be asserted via other 
 mechanisms.
+
+> DID subjects 
+
+The subject of a DID is, by definition, the entity identified by the DID. 
+The DID subject might also be the DID controller. 
+Anything can be the subject of a DID: person, group, organization, thing, or concept.
 
 > DID resolvers and DID resolution 
 
