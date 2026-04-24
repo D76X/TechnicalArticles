@@ -108,17 +108,18 @@ The subject is a logical object about which claims are made, i.e. a person, vehi
 
 ### Credential and Verifiable Credential
 
-**A credential is a set of one or more claims made by an issuer**. 
+**A credential is a set of one or more claims made by an issuer about an entity**. 
 
-Credentials can also include **metadata used to describe properities of the credential**, .i.e the issuer or the 
-credential creation date and time and expiration date and time, etc.
-The **metadata** may also be signed by the issuer to cryptographylly prove that the metadata was issued by the 
-issuer.
+Credentials can also include **metadata used to describe properities of the credential**, 
+.i.e the issuer or the credential creation date and time and expiration date and time, etc.
+The **metadata may also be signed by the issuer** to cryptographylly prove that the metadata 
+was issued by the issuer.
 
-A **verifiable credential is a tamper-evident credential** that has authorship that can be cryptographically verified. 
-Verifiable credentials can be **used to build verifiable presentations**, which can also be cryptographically verified. 
+A **verifiable credential is a tamper-evident credential** that has authorship that can 
+be cryptographically verified. Verifiable credentials can be **used to build verifiable presentations**, 
+which can also be cryptographically verified. 
+
 The claims in a credential can be about different subjects.
-
 
 ###  Entity 
 
@@ -186,7 +187,7 @@ The values in the DID Doc **are required to very the verifiable credentials**.
 ![02.DecentralizedIdentifierArchitecture](./02.DecentralizedIdentifierArchitecture.png)    
 
 
-> DID controllers 
+### DID controllers 
 
 The controller of a DID is the entity (person, organization,or autonomous software) 
 that has the capability (as defined by a DID method) to make changes to a DID document. 
@@ -194,19 +195,29 @@ This capability is typically asserted by the control of a set of cryptographic k
 by software acting on behalf of the controller, though it might also be asserted via other 
 mechanisms.
 
-> DID subjects 
+### DID subjects 
 
 The subject of a DID is, by definition, the entity identified by the DID. 
 The DID subject might also be the DID controller. 
 Anything can be the subject of a DID: person, group, organization, thing, or concept.
 
-> DID resolvers and DID resolution 
+### DID Methods
+
+DID methods such as `did:web` and `did:ion` are the nechanisms by which 
+a particula type of DID and its associated DID Document are: 
+
+- created
+- resolved
+- updated
+- deactivated
+
+### DID resolvers and DID resolution 
 
 A DID resolver is a system component that takes a DID as input and produces a conforming DID document as output. 
 This process is called DID resolution. The steps for resolving a specific type of DID are defined by the relevant 
 DID method specification.
 
-> Verifiable data registries 
+### Verifiable data registries 
 
 DIDs are typically recorded on an underlying system or network of some kind, in order to be resolvable to DID documents. 
 Any system that supports recording DIDs and returning data necessary to produce DID documents is called a verifiable data 
@@ -218,24 +229,36 @@ Examples include:
 - decentralized file systems
 - databases of any kind
 - peer-to-peer networks
-- other forms of trusted and generally distributed data storage
+- other forms of trusted and generally distributed data storage such as blockchain
 
 ---
 
 # Interoperability with Current Identity Standards
 
-## 01 OpenID for Verifiable Credentials Issuance
+OpenID standard is used for the two parts
 
-The OpenID for Verifiable Credentials Issuance is the specification that defines the API used to issue verifiable credentials. 
+1. Verifiable Credentials Issuance
+2. Verifiable Presentations
 
-Identity Providers (Issuers) implements this specification to issue verifiable credentials to Holders.
+## Verifiable Credentials Issuance
 
-The access to any implementation of the OpenID for Verifiable Credentials is **authorized using OAuth 2.0**.  
-This also menas that **any Wallet application will authorize itsself to the any API that issues verifiable creadential with OAuth 2.0**.
+The OpenID for Verifiable Credentials Issuance is the specification that 
+defines the API used to issue verifiable credentials. 
+
+Identity Providers (Issuers) implements this specification to issue verifiable 
+credentials to Holders.
+
+The access to any implementation of the OpenID for Verifiable Credentials is 
+**authorized using OAuth 2.0**.  This also menas that **any Wallet application** 
+**will authorize itself to the any API that issues verifiable creadential with OAuth 2.0**.
+
+**Verifiable Credentials** (VC) are very similar to **identity assertions** such as 
+**ID Tokens in OpenID Connect**, in that VC allow a **Credential Issuer** to assert
+End-User claims.
 
 ---
 
-## 02 OpenID for Verifiable Presentations
+## Verifiable Presentations
 
 > Default Specification
 
