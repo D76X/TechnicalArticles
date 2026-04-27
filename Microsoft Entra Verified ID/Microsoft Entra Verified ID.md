@@ -240,7 +240,7 @@ OpenID standard is used for the two parts
 1. Verifiable Credentials Issuance
 2. Verifiable Presentations
 
-## Verifiable Credentials Issuance
+## OpenID for Verifiable Credentials Issuance
 
 The OpenID for Verifiable Credentials Issuance is the specification that 
 defines the API used to issue verifiable credentials. 
@@ -258,22 +258,32 @@ End-User claims.
 
 ---
 
-## Verifiable Presentations
+## OpenID for Verifiable Presentations
 
 > Default Specification
 
-The OpenID for Verifiable Credentials Presentations is the specification that defines the API used to issue Verifiable Presentations. 
+The OpenID for Verifiable Credentials Presentations is the specification 
+that defines the API used to issue Verifiable Presentations. 
 
-**Holders** implement this specification to issue verifiable presentations to Verifiers.
+**Holders** implement this specification to issue verifiable presentations 
+to Verifiers. A Verifier implements the issuance of access token to access 
+an API based on the verifiable credentials in the verifiable presentation.
+The access token amy also be signed by the subject, if required; this makes
+it possible to issue self-signed tokens. 
 
-Also this specification mandates that access to the corresponding implementation API is by authorization via OAuth 2.  
-Verifiers are the role that requetst access the Verifiable Presentations, therefore this interaxtion is authorizated via OAuth 2.  
+The OpenID for Verifiable Presentations specification mandates that access to the 
+implementation API is by authorization via OAuth 2. Therefore, Verifiers are the 
+role that requests access to the Verifiable Presentations (through the API), 
+therefore this interaction is authorizated via OAuth 2.  
 
 > Latest Specification: There is a newer standard for OpenID for Verifiable Presentations
 
-Verifiers are normally Wallet applications, such as one of the many Authenticator Apps that may be installed on a user's mobile.
-In the default OpenID for Verifiable Presentations just presented the App obtains an access token through the OAuth 2.0 Authorization Flow.
-However, the new standard specifies how an an access token may be obtained by using verifiable credentials already stored in the Wallet. 
+Verifiers are normally Wallet applications, such as one of the many 
+Authenticator Apps that may be installed on a user's mobile.
+In the default OpenID for Verifiable Presentations just presented 
+the App obtains an access token through the OAuth 2.0 Authorization Flow.
+However, the new standard specifies how an an access token may be obtained 
+by using verifiable credentials already stored in the Wallet. 
 
 > Combination of the New specification for Verifiable Presentations with the Default Specification
 
