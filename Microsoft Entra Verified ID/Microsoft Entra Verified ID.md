@@ -307,14 +307,27 @@ an **OP controlled by the End-User**.
 
 It can be combined with OpenID for Verifiable Presentations specification.
 
-OpenID Connect defines mechanisms by which an end-user can leverage an **OpenID Provider (OP)** to **release identity information**, 
-such as authentication and claims, to a **Relying Party (RP) / Verifier**  which can act on that information. 
+OpenID Connect defines mechanisms by which an end-user can leverage an **OpenID Provider (OP)** 
+to **release identity information** about the,eselves, such as authentication and claims, to 
+a **Relying Party (RP) / Verifier**  which can act on that information. 
 
-In this model, the RP trusts assertions made by the self-issued OP, the self-issued OpenID Provider, and eliminates the need for a 
-thrid-party identity provider such as Google or Microsoft. 
+In this model, the RP trusts assertions made by the self-issued OP, the self-issued OpenID Provider, 
+and eliminates the need for a thrid-party identity provider such as Google or Microsoft. 
 
+The Self-Issued OP does not itself assert identity information about this End-user. 
+Instead, the End-user becomes the issuer of identity information. 
+Using Self-Issued OPs, the End-Users can authenticate themselves with Self-Issued ID Tokens 
+signed with keys under the End-user's control and present self-attested claims directly to the RPs. 
+**There is no dependency on centralized Identity Providers**.
 
-, i.e. the OP is the issuer of these assertions.
+The flow from the image can be described as follows:
+
+1. a Relying Party, for example and API implementation that needs to autheticate the user issues an OpenID Provider Request to a Self-Issued OpenID Provider, that is a Identity Provider that implements the Self-Issued OpenID Provider API.
+
+2. The Self-Issued OpenID Provider collect the information about the user that are in the reuest from the RP, whic is enough to identify the user to the Self-Issued OP Provider, and this then carries out Authentication and Authorization against the Wallet of the user. The wallet application of the user, under the control of the user, releases the necessary authorization information about themselves which are also digitally self-signed, and return it ot the OP provider.
+
+3. The OP Provider returns a OP Porvider Response, a self-issued ID Token, to the Relying Party. The RP does not verify the validity of the assertion made on the idetified user, it just trust them as they are digitally self signed and can only have come from the Wallet of the user themselves. The user is in control of any information they wish to share with the RP.
+
 
 
 ---
