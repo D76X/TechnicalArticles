@@ -292,21 +292,30 @@ implementation when it is required that **the ID token is signed by the subject*
 
 > Combination of the New specification for Verifiable Presentations with other Specifications (for self-issued ID tokens)
 
-...
+.
 
 ---
 
 ## 03 OpenID for User Authentication: (SIOP v2 [Self-Issued OpenID Porvider])
 
-The OpenID for User Authentication is **distinct from the sepcifications used for the issuance of verifiable credentials and presentetions**
-described above.
-
-OpenID Connect defines mechanisms by which an End-User can leverage an **OpenID Provider (OP)** to **release identity information**, 
-such as authentication and claims, to a **Relying Party (RP) / Verifier**  which can act on that information. 
-
-In this model, **the RP trusts assertions made by the OP**, i.e. the OP is the issuer of these assertions.
 
 ![03.SIOPv2](./03.SIOPv2.png)    
+
+The OpenID for User Authentication is **distinct from the spEcifications used for the issuance of verifiable credentials and presentetions**
+described above. This specification extends OpenID Connect with the concept of a Self-Issued OpenID Provider (Self-Issued OP), 
+an **OP controlled by the End-User**. 
+
+It can be combined with OpenID for Verifiable Presentations specification.
+
+OpenID Connect defines mechanisms by which an end-user can leverage an **OpenID Provider (OP)** to **release identity information**, 
+such as authentication and claims, to a **Relying Party (RP) / Verifier**  which can act on that information. 
+
+In this model, the RP trusts assertions made by the self-issued OP, the self-issued OpenID Provider, and eliminates the need for a 
+thrid-party identity provider such as Google or Microsoft. 
+
+
+, i.e. the OP is the issuer of these assertions.
+
 
 ---
 
