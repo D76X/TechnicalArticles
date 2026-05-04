@@ -331,15 +331,36 @@ The flow from the image can be described as follows:
 
 ## Use Cases
 
-1. If you only need to present and issue Verifiable Credentials and you do not need ID Tokens 
-Use OpenID for Verifiable Credentials Presentation
+1. If you only need to present and issue Verifiable Credentials AND you do not need ID Tokens 
+
+Use OpenID for Verifiable Credentials Presentation to issue Verifiable Credentials and 
+Verifiable Presentations. 
+
+**This standard cannot be used for user authentication**, which means that cannot be used
+to produce ID Tokens.
 
 2. When to use (SIOP v2 [Self-Issued OpenID Porvider])
 
 (SIOP) v2 is used to handle user authentication and issue ID Tokens 
-to Relaying Parties (applications / APIs).
+to Relying Parties (applications / APIs) usinf the user's Wallet Applications
+which are implementation of SIOP-v2 compliant OPs.
 
-3. Cryptographically Verifiable Claims
+3. Combining OpenID for Verifiable Credentials and Presentation with SIOP v2
+
+It is possible to combine the standards described above:
+
+- OpenID for the issuance of Verifiable Credentials and Presentation
+- SIOP v2 [Self-Issued OpenID Porvider]
+
+In this case Verifiable Credentials and Verifiable Presentation issuance
+is made conditional to the success of a previous user authentication step.
+Only when the user is successfully authenticated the Verifiable Credentials 
+and Verifiable Presentation are issued.
+
+4. Cryptographically Verifiable Claims
+
+- OpenID for the issueance of Verifiable Credentials and Presentation
+- SIOP v2 [Self-Issued OpenID Porvider]
 
 Self-Issued OPs (OpenID Providers) [SIOP v2] can also present cryptographically 
 verifiable claims issued by the third parties trusted by the RPs, when used with 
@@ -364,3 +385,7 @@ of the **Claims Issuers** **is no longer required**.
 This is arguably the main achievements of the SIOP v2 paradigm.
 
 ---
+
+# Decentralized System
+
+![04.DecentralizedSystemv2](./04.DecentralizedSystem.png)     
