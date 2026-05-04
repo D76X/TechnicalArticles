@@ -298,7 +298,6 @@ implementation when it is required that **the ID token is signed by the subject*
 
 ## 03 OpenID for User Authentication: (SIOP v2 [Self-Issued OpenID Porvider])
 
-
 ![03.SIOPv2](./03.SIOPv2.png)    
 
 The OpenID for User Authentication is **distinct from the spEcifications used for the issuance of verifiable credentials and presentetions**
@@ -328,7 +327,33 @@ The flow from the image can be described as follows:
 
 3. The OP Provider returns a OP Porvider Response, a self-issued ID Token, to the Relying Party. The RP does not verify the validity of the assertion made on the idetified user, it just trust them as they are digitally self signed and can only have come from the Wallet of the user themselves. The user is in control of any information they wish to share with the RP.
 
-
-
 ---
 
+## Use Cases
+
+1. If you only need to present and issue Verifiable Credentials and you do not need ID Tokens 
+Use OpenID for Verifiable Credentials Presentation
+
+2. When to use (SIOP v2 [Self-Issued OpenID Porvider])
+
+(SIOP) v2 is used to handle user authentication and issue ID Tokens 
+to Relaying Parties (applications / APIs).
+
+3. Cryptographically Verifiable Claims
+
+Self-Issued OPs (OpenID Providers) [SIOP v2] can also present cryptographically 
+verifiable claims issued by the third parties trusted by the RPs, when used with 
+separate specifications such as OpenID for Verifiable Credentials Presentation.
+
+This mechanism allows to enhance the ID Tokens by embedding in them verified claims 
+about the subject that can be passed to the consuming application/API (Rely Party).
+The advantage of embedding these data directly in the ID Token is that the RP to
+which this verified information is presented in the ID Token, **no longer needs** 
+**to interact with Claims Issuers** and therefore the RP interacts directly and 
+excluively with the user!
+
+This is actually one of the main achievements of the SIOP v2 paradigm as it allows
+**decentralization**. The role of the **Claims Issuers**, that is one of the many 
+well known Identity Providers, such as Google, Microsoft, etc. **is no longer required**.
+
+---
