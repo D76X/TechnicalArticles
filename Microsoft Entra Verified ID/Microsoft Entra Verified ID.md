@@ -347,13 +347,20 @@ separate specifications such as OpenID for Verifiable Credentials Presentation.
 
 This mechanism allows to enhance the ID Tokens by embedding in them verified claims 
 about the subject that can be passed to the consuming application/API (Rely Party).
-The advantage of embedding these data directly in the ID Token is that the RP to
-which this verified information is presented in the ID Token, **no longer needs** 
+The advantage of embedding these signed data directly in the ID Token is that the RP 
+to which this verified information is presented in the ID Token, **no longer needs** 
 **to interact with Claims Issuers** and therefore the RP interacts directly and 
-excluively with the user!
+excluively with the user.
 
-This is actually one of the main achievements of the SIOP v2 paradigm as it allows
-**decentralization**. The role of the **Claims Issuers**, that is one of the many 
-well known Identity Providers, such as Google, Microsoft, etc. **is no longer required**.
+In the traditional flow any information concerning the subject of the ID Token is 
+obtained by the RP by interacting with the corresponding Identity Provider , tipically 
+one of the many well-known Identity Providers, such as Google, Microsoft, etc.
+
+Conversely with SIOP v2 paradigm **decentralization** is possible in that the RP truts 
+the enhanced self-igned information included in the ID Tokens issued by a SIOP v2 OP 
+which makes the interaction with a centralized identity provider unnecessary and the role
+of the **Claims Issuers** **is no longer required**.  
+
+This is arguably the main achievements of the SIOP v2 paradigm.
 
 ---
