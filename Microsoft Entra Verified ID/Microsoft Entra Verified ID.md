@@ -389,3 +389,71 @@ This is arguably the main achievements of the SIOP v2 paradigm.
 # Decentralized System
 
 ![04.DecentralizedSystemv2](./04.DecentralizedSystem.png)     
+
+- the user, and not a Identity Provider, is at the center of this architecture
+
+- data is stored in a decentralized system, which is any system of storage that implements specific protocols for a decentralized storage system, irrespective of the internal implementation details. Examples of technologies that can be use to achieve this goal are: Blockchain, Azure Ledger, etc.
+
+- there is the concept of W3C Decentralized Identifier
+
+- Universal Resolvers are used to retrieve DID Documents
+
+- User can authenticate using Open ID Connect SIOP Compliant Providers
+
+## Example of user workflow
+
+1. The user has a wallet application installed on their mobile phone or device
+
+2. The user 
+
+### Is a wallet application also used to create or obtain verifiable credentials or variable presentations?
+
+Yes, a wallet application (or digital wallet) is a central component in the ecosystem of verifiable credentials (VCs) and, in relation to Verifiable Presentations (VPs), is used to:
+
+- obtain VPs
+- store VPs
+- create VPs
+
+1. Obtaining Verifiable Credentials (VCs)
+
+The wallet app acts as a secure container to receive and store digital credentials (e.g., mobile driver’s license, diplomas, employee IDs).
+
+- Obtaining: 
+
+The user obtains a credential from an issuer (like a government or university) which is then sent securely to the user's wallet application.
+
+- Secure Storage: 
+
+The wallet acts as a digital repository to store these credentials,   
+often protected by biometrics.
+
+2. Creating Verifiable Presentations (VPs)
+
+When a user needs to prove a claim to a verifier (e.g., proving age over 21), the wallet application is used to generate a Verifiable Presentation (VP).
+
+- Creating: 
+
+The wallet signs the presentation with its private key,   
+proving the user is the rightful owner of the credentials.
+
+- Selective Disclosure: 
+
+The wallet allows users to pick which credentials to share,  
+and sometimes allows them to reveal only specific data within  
+a credential (e.g., sharing "over 18" instead of the full birth date).
+
+3. Key Functions of a Wallet
+
+- Issuance: 
+
+Users receive credentials directly into the wallet.
+
+- Management: 
+
+Users can view, organize, and check the status of their credentials.
+
+- Presentation: 
+
+Users present credentials via QR codes or direct links to third parties.
+
+---
