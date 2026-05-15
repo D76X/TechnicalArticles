@@ -456,4 +456,36 @@ Users can view, organize, and check the status of their credentials.
 
 Users present credentials via QR codes or direct links to third parties.
 
+Refs:
+
+[JWT VC Presentation Profile - Draft](https://identity.foundation/jwt-vc-presentation-profile/)  
+
+---
+
+# Microsoft Verified ID
+
+## Core concepts and facts
+
+Microsoft Entra Verified ID uses the OpenID for Verifiable Credentials (Issuance and Presentation) specifications which describes how an issuance or presentation request, and submission should look like when issuers/verifiers communicate with a wallet (Microsoft Authenticator App).
+
+The W3C standards are used by Microsoft Entra Verified ID to define how Verifiable Credentials should look, including which revocation status list spec they follow, etc, so that verifiers from different vendors can understand and verify a presented Verifiable Credentials (for the future interoperability).
+
+The Self-Issued OpenID Provider (SIOP) is used for the id_token_hint attestation flow for Verifiable Credentials claims. We specify `https://self-issued.me` for the issuer instead of an identity provider. In the future it should be possible to authenticate user before the credential is issued.
+
+Azure Active Directory and Azure Active Directory B2C services (at the moment of creating this video) do not support user authentication with Verifiable Credentials. It should be supported in the nearest future so please check the official documentation.
+
+# Microsoft Verified ID example use case
+
+![05.MicrosoftVerifiedID.HowItWorks](./05.MicrosoftVerifiedID.HowItWorks.png) 
+
+1. The user is a employee at Woodgrove Inc
+2. Woodgrove Inc is the issuer fo verifiable credential to the subject, the employee
+3. The employee uses thier wallet application (Microsoft Authenticator App) to request the Verifiable Credentials from Woodgrove Inc
+4. Woodgrove Inc authenticates the employee and based on claims known about the subject issues to them a verifiable credential that is signed with the issuer, Woodgrove Inc, private key
+5. The issuer Woodgrove Inc, stores the correspoonding public key on a decentralized infrastructure
+6. The verifiable credential is stored in the subject's wallet
+7. The employee at Woodgrove Inc wants to access some resources, such as Apps or APIs available at a (partner) business Fabrikam Co
+8. The employee releases a Verifiable Presentation with some claims to Fabrikam Co, that is the verifier in this interaction
+9.   
+
 ---
