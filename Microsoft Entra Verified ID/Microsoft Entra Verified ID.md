@@ -485,7 +485,38 @@ Azure Active Directory and Azure Active Directory B2C services (at the moment of
 5. The issuer Woodgrove Inc, stores the correspoonding public key on a decentralized infrastructure
 6. The verifiable credential is stored in the subject's wallet
 7. The employee at Woodgrove Inc wants to access some resources, such as Apps or APIs available at a (partner) business Fabrikam Co
-8. The employee releases a Verifiable Presentation with some claims to Fabrikam Co, that is the verifier in this interaction
-9.   
+8. The employee releases a Verifiable Presentation with some claims to Fabrikam Co, the verifier in this interaction.
+9. The verifier, Fabrikam Co in this example, can use the PKI and Decentralized Store System to verify the VP.
+10. The verifier retrieves the Public Key of the issuer, together with some other metadata, i.e. the DID Document and can verify that the VP is legittimate in that it is from the claimed issuer Woodgrove Inc.
+11. The verifier retrieves the Public Key of the subject, and in the same way can verify the ownership of the VP to the subject.
+
+
+---
+
+## Why is a Verifiable Presentation issued by a Wallet application signed with the public key of the issuer and the private key of the subject?
+
+
+A Verifiable Presentation (VP) is a holder-controlled data structure 
+used to securely share Verifiable Credentials (VCs) with a verifier. 
+It uses a dual-cryptographic signature structure to prove authenticity 
+and ownership.
+
+- The Issuer's Public Key: 
+
+Proves the underlying credential itself is legitimate. 
+
+Because the Issuer originally signed the credential with their private key, 
+the verifier uses the Issuer's public key to confirm the data was actually 
+issued by the trusted party (e.g., a university or government) and hasn't 
+been tampered with.
+
+- The Subject's Private Key: 
+
+Proves the rightful ownership of the credentials. 
+
+The Wallet application (the holder) signs the entire presentation with 
+the subject's private key. This allows the verifier to cryptographically 
+confirm that the person presenting the credentials is the exact same 
+individual they were originally issued to.
 
 ---
