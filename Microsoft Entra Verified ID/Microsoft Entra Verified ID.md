@@ -6,6 +6,10 @@
 
 [Introduction to Microsoft Entra Verified ID Core Concepts and Use Cases Tech Mind Factory](https://www.youtube.com/watch?v=rek6KDEgGjE&t=913s)   
 
+[Why Verifiable Credentials and Decentralized Identity? - Daniel Krzyczkowski NDC Conferences](https://www.youtube.com/watch?v=cDka7MdtjEA)   
+
+[Decentralized-Identity-and-Verifiable-Credentials Public](https://github.com/microsoft/Decentralized-Identity-and-Verifiable-Credentials)  
+
 ## Ecosystem Overview
 
 ![01.EcosystemOverview](./01.EcosystemOverview.png)    
@@ -164,6 +168,16 @@ A DID document typically:
 The `did:example:123456abcdef` **resolves to a DID Document**.
 The DID Doc contains information about the DID, for example it contains the DID **controller**.
 The values in the DID Doc **are required to very the verifiable credentials**.
+
+Users create, own, and control Decentralized Identifiers (DIDs) independently 
+of any organization or government. These globally unique identifiers are linked 
+to Decentralized Public Key Infrastructure (DPKI) metadata, which consists of 
+JSON documents that contain public key material, authentication descriptors, 
+and service endpoints.
+
+The DID Doc in short is a container for public cryptographical information and metadata.
+DID Documents will eventually be stored by a Decentralized Public Key Infrastructure (DPKI)
+layer that is sometimes referred to as the **Trust System**.
 
 > Example 1: a simple DID Document
 
@@ -474,6 +488,8 @@ The Self-Issued OpenID Provider (SIOP) is used for the id_token_hint attestation
 
 Azure Active Directory and Azure Active Directory B2C services (at the moment of creating this video) do not support user authentication with Verifiable Credentials. It should be supported in the nearest future so please check the official documentation.
 
+---
+
 # Microsoft Verified ID example use case
 
 ![05.MicrosoftVerifiedID.HowItWorks](./05.MicrosoftVerifiedID.HowItWorks.png) 
@@ -489,7 +505,6 @@ Azure Active Directory and Azure Active Directory B2C services (at the moment of
 9. The verifier, Fabrikam Co in this example, can use the PKI and Decentralized Store System to verify the VP.
 10. The verifier retrieves the Public Key of the issuer, together with some other metadata, i.e. the DID Document and can verify that the VP is legittimate in that it is from the claimed issuer Woodgrove Inc.
 11. The verifier retrieves the Public Key of the subject, and in the same way can verify the ownership of the VP to the subject.
-
 
 ---
 
@@ -518,5 +533,50 @@ The Wallet application (the holder) signs the entire presentation with
 the subject's private key. This allows the verifier to cryptographically 
 confirm that the person presenting the credentials is the exact same 
 individual they were originally issued to.
+
+---
+
+## The Trust System
+
+DID Documents as container for public cryptographical information and metadata 
+are stored by a Decentralized Public Key Infrastructure (DPKI) layer that is 
+sometimes referred to as the **Trust System**.
+
+More precisely, the term **Trust System** does not only refers to the decentrilized
+storage but also to the infrastructure that tohgether with the decentrilized store
+enable enitites, such as issuers and verifiers to issue and verify verifiable credentials,
+respectively, **without direct interaction with each other**.
+
+Microsoft, currently, support the following Trust Systems:
+
+---
+
+1. DID:ION (Identity Overlay Network) with Blockchain usage.
+
+[DID:ION - GitHub](https://github.com/decentralized-identity/ion)    
+[Microsoft Security Community Blog ION – We Have Liftoff!](https://techcommunity.microsoft.com/blog/microsoft-security-blog/ion-%E2%80%93-we-have-liftoff/1441555)  
+
+ION is a public, permissionless, Decentralized Identifier (DID) network that implements 
+the blockchain-agnostic Sidetree protocol on top of Bitcoin (as a 'Layer 2' overlay) to 
+support DIDs/DPKI (Decentralized Public Key Infrastructure) at scale.
+
+## What is Microsoft DID:ION ?
+
+---
+
+2. DID:Web is a permission based model that allows trust using a web domain's existing reputation. No blockchain is used here.
+
+[Register your decentralized ID for did:web](https://learn.microsoft.com/en-us/entra/verified-id/how-to-register-didwebsite)  
+
+## What is Microsoft DID:Web ?
+
+A DID (Decentralized Identifier) is a secure, user-owned digital identifier that allows individuals 
+and organizations to control their own identity without relying on centralized third-party providers.
+
+`did:web` is a specific, permission-based DID method supported by Microsoft. 
+
+It utilizes an organization's existing website domain to establish trust and issue digital identities.
+
+How did:web Works in Microsoft Entra Verified IDSelf-Owned Identity: Instead of relying on a blockchain, Microsoft uses the did:web method to tie an identity to a domain. For example, did:web:microsoft.com.The did.json File: Microsoft Entra generates a did.json document that contains your organization's public keys and service endpoints. This file must be hosted at a specific location on your web server: https://[your-domain]/.well-known/did.json.Verification: When your organization issues a Verifiable Credential, digital wallets (like the Microsoft Authenticator app) resolve the DID by checking your web server. If the keys match, the wallet displays a verified badge, proving the credential's authenticity.Key BenefitsNo Blockchain Required: It uses standard HTTPS and DNS infrastructure, making it much easier and cheaper for companies to adopt.Leverages Existing Reputation: It piggybacks on the trust and reputation your website domain already has.Tamper-Proof: It creates a Decentralized Public Key Infrastructure (DPKI), meaning credentials are cryptographically signed and cannot be faked or altered.
 
 ---
