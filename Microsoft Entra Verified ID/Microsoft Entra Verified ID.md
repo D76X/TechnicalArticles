@@ -563,6 +563,39 @@ support DIDs/DPKI (Decentralized Public Key Infrastructure) at scale.
 
 ## What is Microsoft DID:ION ?
 
+ION (Identity Overlay Network) ION is a Layer 2 open, permissionless network based \
+on the purely deterministic Sidetree protocol. It allows individuals and organizations 
+to create, own, and control their digital identities securely, independently of any 
+central authority or corporation.
+
+With ION it is possible to easily anchor the DID on the Bitcoin blockchain.
+
+###  Here are the core components and features of the ION network:
+
+- No Special Tokens or Validators:  
+
+Unlike many crypto networks, ION relies only on the linear block chronology 
+of the Bitcoin blockchain for consensus. It does not have its own utility 
+token or a closed group of trusted validators.
+
+- High Scalability: 
+
+ION operates on Layer 2 using the deterministic Sidetree protocol. 
+It solves the scalability limits of base blockchains, processing tens of 
+thousands of identity operations per second.
+
+- True Ownership: 
+
+Because the network is decentralized, users retain absolute ownership of 
+their digital identity. If a centralized service or account is deleted, 
+the underlying identity and verifiable credentials remain securely in the 
+user's control.
+
+- Open Source: 
+
+The code is open-source and maintained within the Decentralized Identity Foundation 
+(DIF) and is not controlled by Microsoft.
+
 ---
 
 2. DID:Web is a permission based model that allows trust using a web domain's existing reputation. No blockchain is used here.
@@ -573,6 +606,7 @@ support DIDs/DPKI (Decentralized Public Key Infrastructure) at scale.
 
 A DID (Decentralized Identifier) is a secure, user-owned digital identifier that allows individuals 
 and organizations to control their own identity without relying on centralized third-party providers.
+It provides a permission based model that allows trust using a web domain's existing reputation.
 
 `did:web` is a specific, permission-based DID method supported by Microsoft. 
 
@@ -614,14 +648,63 @@ the `did:ion` methods.
 
 ---
 
-# MicrosoftVerifiedID Architecture
+# Microsoft Verified ID Architecture
 
 ![07.MicrosoftVerifiedID.Architecture](./07.MicrosoftVerifiedID.Architecture.png) 
 
 When Microsoft Entra Verified ID is configured by a tenant admin:
 
-1. A Trust System type must be choosen between the two available options `did:web` or the `did:ion`.
+1. A Trust System type must be choosen between the two available options `did:web` or the `did:ion`. The Trust System is responsible for maintaining the verification system for verifiable credentials and its choice cannot be changed later on unless an unenrollment procedure (aka opt-out procedure) is carried out in Microsoft Entra ID and a new setup for Microsoft Entra ID Verifiable Credentials is performed.
 
 2. A Azure Key Vault must be configured, which will generate and store the keys that are used for cryptographic operations, such as signing Verifiable Credentials. 
 
-3.  
+![07.MicrosoftVerifiedID.Architecture.ChoiceOfTheTrustSystem](./07.MicrosoftVerifiedID.Architecture.ChoiceOfTheTrustSystem.png) 
+
+
+
+---
+
+# Microsoft Verified ID Flow
+
+![08.MicrosoftVerifiedID.InteractionFlow.ION](./08.MicrosoftVerifiedID.InteractionFlow.ION.png)   
+
+AIH: The flow is particularly complex to understand I need help!
+
+![09.MicrosoftVerifiedID.WalletRequestIssuanceDetails](./09.MicrosoftVerifiedID.WalletRequestIssuanceDetails.png)   
+
+---
+
+# Verifiable Credentials Use Cases
+
+In the cases of Enterprises
+
+1. Onboarding and credential issuance
+
+Enterpise have the following general onboarding needs:
+
+- onboard employees
+- onboard partners
+- onboard customers
+
+Usually a dedicated Enterprise department, i.e.HR, is in charge of 
+enrolling the subject and verify their identity through legal documents, 
+i.e. their government IDs, together with outher legal source of claims 
+such as their degrees or proof of previous employment, etc. 
+
+Once the identity and claims of the subject have been verified the enterprise
+wants to issue to the subject some ID in a digital form so that, for example,
+the subject may be authorized to access some corporate resources that are 
+relevant to them.
+
+If the issued digital IDs adhere to an open standard, such as Veriable Credentials,
+then a the mechanisms of issuance, verification and access are going to be uniform.
+This is the goal of inter-operability that Veriable Credentials achieve.
+
+2. Self-service account recovery
+
+Enterpises have also the need to streamline the account recovery procedures
+to minimize its complexity and cost through self-servicing. 
+
+Self-servicing reduces support calls.
+
+---
