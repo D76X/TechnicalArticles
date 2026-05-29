@@ -676,7 +676,7 @@ AIH: The flow is particularly complex to understand I need help!
 
 # Verifiable Credentials Use Cases
 
-In the cases of Enterprises
+## Enterprise Scenarios
 
 1. Onboarding and credential issuance
 
@@ -705,6 +705,15 @@ This is the goal of inter-operability that Veriable Credentials achieve.
 Enterpises have also the need to streamline the account recovery procedures
 to minimize its complexity and cost through self-servicing. 
 
-Self-servicing reduces support calls.
+Self-servicing reduces support calls to the Help-Desk.
+
+If some verifiable credential remain securely stored on the subject's autheticator
+app, these can be used to recover their account without Help-Desk intervention.
+
+---
+
+## Customer Scenarios
+
+
 
 ---
