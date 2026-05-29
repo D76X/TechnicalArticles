@@ -493,6 +493,7 @@ Azure Active Directory and Azure Active Directory B2C services (at the moment of
 # Microsoft Verified ID example use case
 
 ![05.MicrosoftVerifiedID.HowItWorks](./05.MicrosoftVerifiedID.HowItWorks.png) 
+![06.MicrosoftVerifiedID.HowItWorks](./06.MicrosoftVerifiedID.HowItWorks.png) 
 
 1. The user is a employee at Woodgrove Inc
 2. Woodgrove Inc is the issuer fo verifiable credential to the subject, the employee
@@ -580,3 +581,47 @@ It utilizes an organization's existing website domain to establish trust and iss
 How did:web Works in Microsoft Entra Verified IDSelf-Owned Identity: Instead of relying on a blockchain, Microsoft uses the did:web method to tie an identity to a domain. For example, did:web:microsoft.com.The did.json File: Microsoft Entra generates a did.json document that contains your organization's public keys and service endpoints. This file must be hosted at a specific location on your web server: https://[your-domain]/.well-known/did.json.Verification: When your organization issues a Verifiable Credential, digital wallets (like the Microsoft Authenticator app) resolve the DID by checking your web server. If the keys match, the wallet displays a verified badge, proving the credential's authenticity.Key BenefitsNo Blockchain Required: It uses standard HTTPS and DNS infrastructure, making it much easier and cheaper for companies to adopt.Leverages Existing Reputation: It piggybacks on the trust and reputation your website domain already has.Tamper-Proof: It creates a Decentralized Public Key Infrastructure (DPKI), meaning credentials are cryptographically signed and cannot be faked or altered.
 
 ---
+
+## DID User Agent/Wallet
+
+- Microsoft Entra Verified ID uses Microsoft Authenticator as Wallet.
+
+- The Authenticator 
+
+    - creates DIDs
+    - facilitates issuance and presentation requests for verifiable credentials 
+    - manages the backup of the DID's seed through an encrypted wallet file.
+
+---
+
+## Microsoft Resolver
+
+The Microsoft Resolver is used to interact with Decentralized Systems v ia a 
+standard API.
+
+It is an API that looks up and resolves DIDs using the `did:web` or the `did:ion` 
+methods and returns the DID Document Object (DDO). 
+
+The DDO includes DPKI metadata associated with the DID such as public keys and service endpoints.
+
+---
+
+## Entra Verified ID Service
+
+An issuance and verification service in Azure cloud and a REST API 
+for W3C Verifiable Credentials that are signed with the `did:web` or 
+the `did:ion` methods.
+
+---
+
+# MicrosoftVerifiedID Architecture
+
+![07.MicrosoftVerifiedID.Architecture](./07.MicrosoftVerifiedID.Architecture.png) 
+
+When Microsoft Entra Verified ID is configured by a tenant admin:
+
+1. A Trust System type must be choosen between the two available options `did:web` or the `did:ion`.
+
+2. A Azure Key Vault must be configured, which will generate and store the keys that are used for cryptographic operations, such as signing Verifiable Credentials. 
+
+3.  
