@@ -714,6 +714,24 @@ app, these can be used to recover their account without Help-Desk intervention.
 
 ## Customer Scenarios
 
+### The B2C Scenario 
+
+Imagine the case of a utility company, for example an energy provider responsible
+for supplying their customers with utilities such as electric power and gas and 
+for the maintenance to the necessary domestic infrastructure.
+
+Following the remote detection of fault in a infrastructure component within a 
+customer household or industrial premise and confirmation of the problem with the 
+customr over the phone, the provider agrees with the customer to send out a qulified
+technician for assessment and repair.
+
+The customer can ask the visiting technician for a digital Verified Credential presented 
+to them by means of a scannable QR displayed on the technician's device. The customer scans
+the QR code and their wallet application confirms that the presented credential has been 
+verified has been issued by the firm for the specific assistance case as agreed. 
+
+### The Digital Pass Scenario 
+
 
 
 ---

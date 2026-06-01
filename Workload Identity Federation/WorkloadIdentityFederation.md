@@ -16,4 +16,15 @@
 
 [GitHub Azure AD OIDC Authentication John Savill's Technical Training](https://www.youtube.com/watch?v=XkhkkLBkAT4)  
 
+[Microsoft Entra Workload ID: Configure an app to trust an external identity provider](https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-create-trust?pivots=identity-wif-apps-methods-azp)  
+
+[GitHub OpenID Connect](https://docs.github.com/en/actions/concepts/security/openid-connect#configuring-the-oidc-trust-with-the-cloud)  
+
+[Use GitHub Actions to connect to Azure](https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure?tabs=azure-portal%2Cwindows)
+
+[GitHub action: Azure Login](https://github.com/Azure/login/)  
+
+[Configure an app to trust an external identity provider](https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-create-trust?pivots=identity-wif-apps-methods-azp)  
+
+
 ---
