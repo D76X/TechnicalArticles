@@ -596,6 +596,8 @@ user's control.
 The code is open-source and maintained within the Decentralized Identity Foundation 
 (DIF) and is not controlled by Microsoft.
 
+[ION Explorer: a tool to retrive DID Document from its DID](https://identity.foundation/ion/explorer/)
+
 ---
 
 2. DID:Web is a permission based model that allows trust using a web domain's existing reputation. No blockchain is used here.
@@ -716,6 +718,8 @@ app, these can be used to recover their account without Help-Desk intervention.
 
 ### The B2C Scenario 
 
+> Scenario 1:
+
 Imagine the case of a utility company, for example an energy provider responsible
 for supplying their customers with utilities such as electric power and gas and 
 for the maintenance to the necessary domestic infrastructure.
@@ -730,8 +734,32 @@ to them by means of a scannable QR displayed on the technician's device. The cus
 the QR code and their wallet application confirms that the presented credential has been 
 verified has been issued by the firm for the specific assistance case as agreed. 
 
-### The Digital Pass Scenario 
+> Scenario 2:
+
+A vehicles rental company may issue verifiable credentials to their returning customers to 
+make it easier for them to use their services by avoiding the need of repeated manual licence
+requirements verification. Aftet a first-time procedure in which the customer's driving license 
+details, i.e. the expiry date are collected, stored and verified a digital verifiable credential 
+is issued to them to be stored on their wallet application for later easy and fast reuse at any of 
+their branch office or even by online booking and reservations. 
+
+The interaction would take place in the form of the tipical QR code issued to the customer at the 
+first verification step, when the manual documentation checks are carried out. The employee processing
+the customer details, ask the customer to scan the QR code with their scanner app at the end of a positive
+verification and their wallet application carries out the interactions that lead to the issuance and 
+secure storage of the digital verifiable credentials on the customer's device for later reuse.
 
 
+### The Scenario of the Creation of Digital Passes  
+
+Imagine a company plans an (exclusive) event and wishes to share some information such as catalogs, \
+broshures or other exclusive information strictly with the partecipants to the event. 
+
+The organizers may also issue digital tickets to the partecipants as opposed to the paper counterpart,  
+so that the ticket will be stored on the wallet's app of each partecipant at the time of their enrollment.
+
+Further, the event organizer may use thee same mechanism yet again to issue a free-coffe coupon for 
+some partecipants, who will be able to use the coupon as a 1-time verifiable credential at the time of
+the event.
 
 ---

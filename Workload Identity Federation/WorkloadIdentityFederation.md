@@ -16,6 +16,8 @@
 
 [GitHub Azure AD OIDC Authentication John Savill's Technical Training](https://www.youtube.com/watch?v=XkhkkLBkAT4)  
 
+[Microsoft Identity | Secure GitHub Actions with Azure Workload Identity Federation DevOps on Azure](https://www.youtube.com/watch?v=0nNaU1PB4vc)  
+
 [Microsoft Entra Workload ID: Configure an app to trust an external identity provider](https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-create-trust?pivots=identity-wif-apps-methods-azp)  
 
 [GitHub OpenID Connect](https://docs.github.com/en/actions/concepts/security/openid-connect#configuring-the-oidc-trust-with-the-cloud)  
@@ -24,7 +26,16 @@
 
 [GitHub action: Azure Login](https://github.com/Azure/login/)  
 
+[GitHub: Configuring OpenID Connect in Azure Use OpenID Connect within your workflows to authenticate with Azure](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-azure)   
+
 [Configure an app to trust an external identity provider](https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-create-trust?pivots=identity-wif-apps-methods-azp)  
 
+---
+
+# Flexible federated identity credentials
+
+[Flexible federated identity credentials (preview)](https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-flexible-federated-identity-credentials?tabs=github)  
+
+[GitHub Actions OIDC with Azure flexible federated identity credentials #172176](https://github.com/orgs/community/discussions/172176)    
 
 ---
