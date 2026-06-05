@@ -640,6 +640,74 @@ methods and returns the DID Document Object (DDO).
 
 The DDO includes DPKI metadata associated with the DID such as public keys and service endpoints.
 
+[GitHub: Decentralized Identity Foundation](https://github.com/decentralized-identity)
+[Web DID Resolver](https://github.com/decentralized-identity/web-did-resolver/blob/master/README.md) 
+
+# How to resolve DID Documents from their DID Identifier
+
+---
+
+## 1. DID Discovery API
+
+[DID Discovery](https://didproject.azurewebsites.net/docs/discovery.html)    
+
+You can use the discovery API to fetch the DID document associated with a DID. 
+This step will be necessary any time you wish to interact with a DID, including 
+during authentication. 
+
+This is a developer node and API endpoint operated by Microsoft to resolve and fetch 
+Decentralized Identifier (DID) documents. It is used for handling decentralized identity 
+protocols, primarily related to the ION (Identity Overlay Network) and Microsoft Entra Verified.
+
+
+To discover a DID, you can send an HTTP request:
+
+```
+GET /1.0/identifiers/did:ion-test:EiDDNR0RyVI4rtKFeI8GpaSougQ36mr1ZJb8u6vTZOW6Vw HTTP/1.1
+Host: beta.discover.did.microsoft.com
+Accept: application/json
+```
+
+---
+
+## 2. ION Explorer
+
+[ION Explorer: a tool to retrive DID Document from its DID](https://identity.foundation/ion/explorer/)  
+
+There is however, the tool called `ION Explorer` based on the ION Reolver
+that can be used in the browser to resolve DID Documents from their DID 
+Identifier.
+
+---
+
+## 3. The beta.discover.did Endpoint
+
+The `https://beta.discover.did.microsoft.com/1.0/identifiers` endpoint may 
+have been taken down and become irrelevant. 
+
+Example:
+[DID not resolving after multiple blocks #195](https://github.com/decentralized-identity/ion/issues/195)  
+
+```
+https://beta.discover.did.microsoft.com/1.0/identifiers/did:ion:EiBodPw-I3MC-Dfn-0pyK3UqlwHa9OqexA98d9GqTsTISw
+```
+---
+
+### Key Features and UsesDID Resolution: 
+
+The endpoint takes a Decentralized Identifier (e.g., did:ion-test:...) and returns the 
+associated DID document in JSON format. This document contains the public keys and service
+endpoints required to verify identities and authenticate users.
+
+### Developer Integration: 
+
+It is primarily utilized by developers building applications that require cryptographically 
+secure, verifiable credentials.
+
+### API Structure: 
+
+Developers fetch the data by sending a standard GET HTTP request to the endpoint.
+
 ---
 
 ## Entra Verified ID Service
@@ -661,8 +729,6 @@ When Microsoft Entra Verified ID is configured by a tenant admin:
 2. A Azure Key Vault must be configured, which will generate and store the keys that are used for cryptographic operations, such as signing Verifiable Credentials. 
 
 ![07.MicrosoftVerifiedID.Architecture.ChoiceOfTheTrustSystem](./07.MicrosoftVerifiedID.Architecture.ChoiceOfTheTrustSystem.png) 
-
-
 
 ---
 
