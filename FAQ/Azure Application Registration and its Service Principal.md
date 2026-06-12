@@ -1,3 +1,33 @@
+
+# Azure: can I turn App Registration into an Enterprise app?
+
+You don't need to "turn" an App Registration into an Enterprise Application; 
+They are fundamentally the same object. 
+
+The App Registration is the blueprint (global app configuration), 
+while the Enterprise Application (Service Principal) is the deployed instance 
+of that blueprint within your specific directory.
+
+- To locate and configure the Enterprise Application instance of your registered app:
+
+1. Go to the Microsoft Entra admin center.
+2. Navigate to Identity > Applications > Enterprise applications.
+3. Search for your application by name. 
+
+(If you don't see it, change the `Application Type` filter to `All applications`)
+
+4. Click on your app's name to manage its directory-specific properties, user assignments, 
+and single sign-on settings. 
+
+Alternatively, you can jump straight to the local instance by 
+going to App registrations, selecting your app, and clicking the Managed application 
+in local directory link on the Overview page.
+
+[Azure App registration does not appear in Enterprise applications - StackOverflow](https://stackoverflow.com/questions/73744696/azure-app-registration-does-not-appear-in-enterprise-applications)  
+
+
+---
+
 <img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
 
 # Can you explain me the difference between an Azure Application Registration and its Service Principal? I need a refresher on these concepts.
