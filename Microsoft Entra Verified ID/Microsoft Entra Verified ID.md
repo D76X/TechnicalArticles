@@ -2,11 +2,11 @@
 
 [AZ-500-SC-100-Understanding and Using Verifiable Credentials - John Savill](https://www.youtube.com/watch?v=BxLSSH_EHjo&t=4834s)   
 
-[Defeat Deep Fakes and Imposters with Verified ID and Face Check - John Savill](https://www.youtube.com/watch?v=58j2PLW-M5k&t=8s)   
+[Why Verifiable Credentials and Decentralized Identity? - Daniel Krzyczkowski NDC Conferences](https://www.youtube.com/watch?v=cDka7MdtjEA)   
 
 [Introduction to Microsoft Entra Verified ID Core Concepts and Use Cases Tech Mind Factory](https://www.youtube.com/watch?v=rek6KDEgGjE&t=913s)   
 
-[Why Verifiable Credentials and Decentralized Identity? - Daniel Krzyczkowski NDC Conferences](https://www.youtube.com/watch?v=cDka7MdtjEA)   
+[Defeat Deep Fakes and Imposters with Verified ID and Face Check - John Savill](https://www.youtube.com/watch?v=58j2PLW-M5k&t=8s)   
 
 [Decentralized-Identity-and-Verifiable-Credentials Public](https://github.com/microsoft/Decentralized-Identity-and-Verifiable-Credentials)  
 
