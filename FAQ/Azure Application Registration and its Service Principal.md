@@ -26,6 +26,8 @@ in local directory link on the Overview page.
 [Azure App registration does not appear in Enterprise applications - StackOverflow](https://stackoverflow.com/questions/73744696/azure-app-registration-does-not-appear-in-enterprise-applications)  
 
 
+
+
 ---
 
 <img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
