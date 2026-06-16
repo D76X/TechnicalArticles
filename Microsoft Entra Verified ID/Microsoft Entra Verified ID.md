@@ -871,15 +871,6 @@ A package requires one or more policies to dictate who can request the package
 (including external guest users), who must approve it, and how long the access 
 lasts.
 
-### Access Package Policies together with Microsoft Entra Verified ID
-
-A policy can also specify which kind of credential must be presented by a user
-who requtest the access package, for example, very importantly a policy can be
-that the user must present a face scan as a verifiable credential at the time
-of their request to the access package.
-
-This works in Microsoft Entra ID
-
 ### Why Organizations Use Access Packages
 
 Access packages shift organizations away from manual, ad-hoc access assignments. 
@@ -905,5 +896,21 @@ ensure that if access is no longer needed, it is systematically revoked.
 Vendors and contractors can be granted temporary, policy-governed access 
 to your directory. When their assignment expires, their guest account 
 is automatically disabled and cleaned up.
+
+### Access Package Policies together with Microsoft Entra Verified ID
+
+[Defeat Deep Fakes and Imposters with Verified ID and Face Check - John Savill](https://www.youtube.com/watch?v=58j2PLW-M5k&t=8s)   
+
+A policy for an Access Pakage can also specify which kind of credential must
+be presented by a user who requtest the access package, for example, very 
+importantly a policy can be defined such that the user who request the access
+package must present a Verifiable Presentation that presents the Verifiable 
+Credential issued to them at the time of their onboarding within the Microsoft 
+Entra ID tenant for the organization AND in addition to this Verifiable Presentation
+the user must also present a face scan, which is another type of Verifiable Presentation.
+Under the hood Microsoft Entra ID will verify the user's verifiable presentation
+and the face scan (leveraging the Azure Face API) against the face image of the 
+user that was saved as part of their Microsoft Entra ID account at the time of 
+their onboarding.
 
 ---
