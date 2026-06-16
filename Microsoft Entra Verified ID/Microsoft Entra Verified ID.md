@@ -914,3 +914,12 @@ user that was saved as part of their Microsoft Entra ID account at the time of
 their onboarding.
 
 ---
+
+# NotebookLM instructions v1.0
+
+Use the sources provided to create two articles: a part-1 article that introduces the fundamental concepts of decentralized identity systems, why we need them, and which problems these solve when compared to the present state of centralized identity providers; and a part-2 article that delves deeper into the technical aspects, potential use cases, and future outlook of decentralized identity. This first article should be more conceptual and introductory and not delve into the technical details and technologies. Should also provide some real-world examples of how this technology can be employed to benefit businesses, organizations, their security standing, and especially the users.
+
+The part-2 article should be more technical and, with references to the part-1 article, should provide more details about the technologies and the implementations of a decentralized identity system. It should also focus on its implementation as part of the Microsoft Verified ID offering.
+
+- Keep the tome easy to read and technical.
+- For both articles, generate some clear graphics without overdoing it; the images should help the readers to clarify and visualize the concepts.
