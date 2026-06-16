@@ -829,3 +829,81 @@ some partecipants, who will be able to use the coupon as a 1-time verifiable cre
 the event.
 
 ---
+
+# What is an Access Package in Microsoft Entra ID?
+
+[Defeat Deep Fakes and Imposters with Verified ID and Face Check - John Savill](https://www.youtube.com/watch?v=58j2PLW-M5k&t=8s)   
+
+An Access Package in Microsoft Entra ID Governance is a bundle of resources 
+such as: 
+
+- applications
+- group memberships
+- Microsoft Teams
+- SharePoint sites
+
+A typical user, according to their roles in the organization, needs some or all of 
+these resources to perform a specific task as part of their roles.
+
+It automates and secures identity management by combining these resources with request policies, approval workflows, and automatic expiration.
+
+## Key Components of an Access Package
+
+- Resource Bundling: 
+
+Packages allow administrators to group various IT assets into a single requestable unit. 
+
+Resources like: 
+
+    - Salesforce
+    - Microsoft 365 Groups
+    -custom SaaS apps
+
+- Catalogs: 
+
+Access packages must live inside a Catalog, which acts as a secure container 
+used to delegate administrative rights to specific department or application 
+owners.
+
+- Policies: 
+
+A package requires one or more policies to dictate who can request the package 
+(including external guest users), who must approve it, and how long the access 
+lasts.
+
+### Access Package Policies together with Microsoft Entra Verified ID
+
+A policy can also specify which kind of credential must be presented by a user
+who requtest the access package, for example, very importantly a policy can be
+that the user must present a face scan as a verifiable credential at the time
+of their request to the access package.
+
+This works in Microsoft Entra ID
+
+### Why Organizations Use Access Packages
+
+Access packages shift organizations away from manual, ad-hoc access assignments. 
+
+They are highly utilized for:
+
+- Streamlining Onboarding: 
+
+New hires can log into the `My Access portal` and request exactly the set of
+tools they need for their specific job function.
+
+- Lifecycle Management: 
+
+Because access packages have built-in expiration dates, users do not retain
+permissions after a project ends. 
+
+- Recurring Access Reviews 
+
+ensure that if access is no longer needed, it is systematically revoked.
+
+- External Collaboration: 
+
+Vendors and contractors can be granted temporary, policy-governed access 
+to your directory. When their assignment expires, their guest account 
+is automatically disabled and cleaned up.
+
+---
