@@ -14,7 +14,6 @@ This article is about:
 - The central role played by the user and their wallet application in a Dentralized Identity Systems
 - The important fact that the user retains ownership of their verifiable credentials as these are
 
-
 The images when taken together help to explain the reasons and need to introduce and prefer 
 a Dentralized Identity System architecture over the current standard based on Centralized Identity Systems.
 
@@ -31,3 +30,12 @@ The same principle can be then replicated in a completely digital form whereby t
 longer issued on paper, instead a digital form is issued to the user which is signed unequvocally by 
 the unique cryptographic assets of the competent issuer and that can be safely stored on the personal
 wallet app of the user this document belongs to.
+
+Other private and public organizations, including other government offices, can then consume these 
+verifiable credentials in their processes to ascertain claims about the user. 
+This process usually consist in the Verifier issuing a QR code that the user can be use within their 
+wallet application, which triggers the creation of a Verifiable Presentaion with claims about the user
+together with corrisponding data about the issuers of those claim.
+
+The Verifaiable Presentation as a digital asset can then be used by the Verifier that uses the 
+Distributed Trust System, the Verifiable Data Register, to ...
