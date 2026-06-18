@@ -1,4 +1,4 @@
-# Part 1 — Why Digital Identity Needs a Reset
+# Decentralized Identity Systems Concepts
 
 ![Centralized Identity Systems](./202606-BLOG-Verified-ID-01.jpg)
 
@@ -98,11 +98,16 @@ Nevertheless, emerging technologies and implementation such as **Microsoft Entra
 
 ## The role of the wallet
 
-The wallet is central to the user experience. In Microsoft’s documentation, Microsoft Authenticator is the wallet app that can create decentralized identifiers, receive issuance requests, store credentials, and respond to presentation requests.[cite:11]
+The wallet is central to the user experience. In Microsoft’s documentation, Microsoft Authenticator is the wallet app that can: 
 
-That matters because the wallet is where the user’s control becomes real. The user can review a request, consent to share a credential, and keep a record of where that credential was presented.[cite:11][cite:24]
+- create decentralized identifiers 
+- receive issuance requests
+- store credentials
+- respond to presentation requests
 
-This is a major conceptual improvement over systems where identity is silently copied between services or reused without much visibility from the user.[cite:11]
+That matters because the wallet is where the user’s control becomes real. The user can review a request, consent to share a credential, and keep a record of where that credential was presented.
+
+This is a major conceptual improvement over systems where identity is silently copied between services or reused without much visibility from the user.
 
 ## Examples that make the value clear
 
@@ -110,40 +115,52 @@ The easiest way to understand decentralized identity is through real-world scena
 
 ### Employee proof
 
-A company can issue an employee credential to a worker. That worker can later present it to a partner organization to prove employment status without needing a custom federation link between both companies.[cite:11][cite:24]
+A company can issue an employee credential to a worker. That worker can later present it to a partner organization to prove employment status without needing a custom federation link between both companies.
 
-Microsoft’s Woodgrove and Proseware example shows exactly this pattern: one company issues proof of employment, and another company accepts that proof to grant a discount or service.[cite:11][cite:24]
+Microsoft’s Woodgrove and Proseware example shows exactly this pattern: one company issues proof of employment, and another company accepts that proof to grant a discount or service.
 
 ### Remote onboarding
 
-A verified identity credential can help with remote hiring and onboarding. After an identity proofing step, the new employee can use the credential to receive initial access or prove identity in later onboarding steps.[cite:24]
+A verified identity credential can help with remote hiring and onboarding. After an identity proofing step, the new employee can use the credential to receive initial access or prove identity in later onboarding steps.
 
-This can reduce manual review and avoid unnecessary copying of sensitive identity data into each internal system.[cite:24]
+This can reduce manual review and avoid unnecessary copying of sensitive identity data into each internal system.
 
 ### Access to external services
 
-A person may need to prove something outside their employer’s trust boundary, for example employee status, supplier status, or membership in a program. A portable credential is often a better fit than creating yet another external account.[cite:24]
+A person may need to prove something outside their employer’s trust boundary, for example employee status, supplier status, or membership in a program. A portable credential is often a better fit than creating yet another external account.
 
-This is useful because the verifier can trust the issuer’s signed credential without needing the issuer to sit in the middle of every transaction.[cite:24]
+This is useful because the verifier can trust the issuer’s signed credential without needing the issuer to sit in the middle of every transaction.
 
 ### Public and regulated services
 
-The same pattern can apply to health cards, permits, student credentials, age checks, or local government services. The verifier only needs enough proof for the decision at hand, not a full copy of the user’s identity records.[cite:11]
+The same pattern can apply to health cards, permits, student credentials, age checks, or local government services. The verifier only needs enough proof for the decision at hand, not a full copy of the user’s identity records.
 
-That makes the model easier to explain to readers because it mirrors how official documents are already used in the physical world.[cite:11]
+That makes the model easier to explain to readers because it mirrors how official documents are already used in the physical world.
 
 ## Where Microsoft Entra Verified ID fits
 
-Microsoft Entra Verified ID is Microsoft’s managed service for issuing and verifying verifiable credentials.[cite:20][cite:21] It is based on decentralized identity concepts and open standards such as W3C verifiable credentials and decentralized identifiers.[cite:11]
+Microsoft Entra Verified ID is Microsoft’s managed service for issuing and verifying verifiable credentials. It is based on decentralized identity concepts and open standards such as W3C verifiable credentials and decentralized identifiers.
 
-For a Microsoft-focused audience, the key point is that Verified ID extends identity beyond ordinary sign-in. It supports use cases where an organization needs a trusted, portable, privacy-aware proof that can be reused across systems and organizational boundaries.[cite:11][cite:24]
+For a Microsoft-focused audience, the key point is that Verified ID extends identity beyond ordinary sign-in. It supports use cases where an organization needs a trusted, portable, privacy-aware proof that can be reused across systems and organizational boundaries.
 
-In simple terms, Entra ID helps users sign in to systems. Verified ID helps users prove something about themselves in a way that another party can verify and trust.[cite:20][cite:24]
+In simple terms, Entra ID helps users sign in to systems. Verified ID helps users prove something about themselves in a way that another party can verify and trust.
 
-## What this first article should leave with the reader
+## Conclusion
 
-The main idea is simple. Today’s identity systems are powerful, but they place too much trust, data, and control in the middle. Decentralized identity changes that by giving users a wallet, giving organizations reusable signed credentials, and giving verifiers a better way to check claims without collecting everything themselves.[cite:11][cite:24]
+The Centralized Identity Systems currently in use place much trust, data, and control in the hands of a few Identity Providers. 
 
-That is why verifiable credentials matter. They make digital trust more portable, more private, and easier to reuse across real business scenarios.[cite:11][cite:20]
+Decentralized identity Systems change te paradigm by giving: 
 
-Part 2 can now build on this foundation and explain the technical details behind DIDs, verifiable presentations, trust systems, issuance flows, verification flows, and the Microsoft Entra Verified ID architecture in more depth.[cite:11][cite:24]
+- users a wallet
+- organizations reusable signed credentials
+- verifiers a better way to check claims without collecting everything themselves
+
+That is why verifiable credentials matter and represent the basis for a more secure approach to the management of user identies and their handling. 
+
+They make digital trust 
+
+- more portable
+- more private 
+- easier to reuse across real business scenarios
+
+A follow-up article will build on this foundation and explain the technical details behind DIDs, verifiable presentations, trust systems, issuance flows, verification flows, and the Microsoft Entra Verified ID architecture in more depth.
