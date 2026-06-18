@@ -314,7 +314,7 @@ implementation when it is required that **the ID token is signed by the subject*
 
 ![03.SIOPv2](./03.SIOPv2.png)    
 
-The OpenID for User Authentication is **distinct from the spEcifications used for the issuance of verifiable credentials and presentetions**
+The OpenID for User Authentication is **distinct from the specifications used for the issuance of verifiable credentials and presentetions**
 described above. This specification extends OpenID Connect with the concept of a Self-Issued OpenID Provider (Self-Issued OP), 
 an **OP controlled by the End-User**. 
 
