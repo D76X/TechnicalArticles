@@ -34,3 +34,5 @@ I would like the part-1 article to
 1. Follow the tone and the clarity of [Decentralized Identity Systems Concepts](https://www.neteye-blog.com/blog/2026/06/19/decentralized-identity-systems-concepts/)
 2. Have link to the relevant documentation from [Microsoft Entra Verified ID documentation](https://learn.microsoft.com/en-us/entra/verified-id/) or any other relevant sources that can be found online
 3. Use images where useful to explain or clarify concepts, flows or mechanism - I may later proiduce images manually using Google Drawing but you can include images from the web that I would base my images on.
+
+ Help me to implement @.github\specs\01-TA-MicrosoftEntraVerifiedId.spec.md and write your output to @20260629-part-2-01.md 

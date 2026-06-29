@@ -1,0 +1,1 @@
+Help me to implement @.github\specs\01-TA-MicrosoftEntraVerifiedId.spec.md and write your output to @20260629-part-2-01.md 
