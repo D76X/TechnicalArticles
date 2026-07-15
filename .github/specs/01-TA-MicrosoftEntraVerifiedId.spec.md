@@ -22,10 +22,11 @@ The focus of the part-2 article, for which I do not have a title yet, should be 
 ## The main sources for this specification
 
 [AZ-500-SC-100-Understanding and Using Verifiable Credentials - John Savill](https://www.youtube.com/watch?v=BxLSSH_EHjo&t=4834s)   
-[Defeat Deep Fakes and Imposters with Verified ID and Face Check - John Savill](https://www.youtube.com/watch?v=58j2PLW-M5k&t=8s)   
+[Defeat Deep Fakes and Imposters with Verified ID and Face Check - John Savill](https://www.youtube.com/watch?v=58j2PLW-M5k&t=8s)      
 [What is Face Check with Microsoft Entra Verified ID? Microsoft Mechanics](https://www.youtube.com/watch?v=Ic6P1mEsYLI)  
 [Microsoft Entra Verified ID documentation](https://learn.microsoft.com/en-us/entra/verified-id/)  
-[Decentralized Identity Systems Concepts](https://www.neteye-blog.com/blog/2026/06/19/decentralized-identity-systems-concepts/)
+[Decentralized Identity Systems Concepts](https://www.neteye-blog.com/blog/2026/06/19/decentralized-identity-systems-concepts/)   
+[Microsoft Entra Verified ID identity verification partners](https://learn.microsoft.com/en-us/entra/verified-id/idv-partners)   
 
 ## The main sources for this specification
 
