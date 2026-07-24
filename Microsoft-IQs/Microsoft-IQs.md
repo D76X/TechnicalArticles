@@ -14,3 +14,16 @@
 [Is ontology replacing the semantic model? Guy in a Cube](youtube.com/watch?v=y1iw0tf4lzY&pp=ugUEEgJlbg%3D%3D)  
 
 ---
+
+# Azure OpenAI
+
+[Azure OpenAI in Foundry Models](https://azure.microsoft.com/en-us/products/ai-foundry/models/openai)  
+
+Azure OpenAI Service is a cloud-based platform that delivers advanced artificial intelligence 
+models—including GPT-4, DALL-E, and Whisper—combined with the following features from Microsoft Azure:
+
+- enterprise-grade security
+- data privacy
+- compliance 
+
+---
