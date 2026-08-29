@@ -4,6 +4,8 @@
 
 [Entra Passkey Registration Campaign John Savill's Technical Training](https://www.youtube.com/watch?v=10Se9jR-cR0&t=203s)  
 
+[Enable passkeys in Authenticator](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-enable-authenticator-passkey)  
+
 ---
 
 ## What is the WebAuthn component?
