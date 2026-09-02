@@ -6,6 +6,12 @@
 
 [Enable passkeys in Authenticator](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-enable-authenticator-passkey)  
 
+[Automatic Passkey Rollout Update John Savill's Technical Training](https://www.youtube.com/watch?v=hAm_DcqH0nY)  
+
+[Entra Synced Passkeys and Passkey Profiles John Savill's Technical Training](https://www.youtube.com/watch?v=e0FPn-gJeO4&t=19s)   
+
+[What is Phishing Resistant Authentication John Savill's Technical Training](https://www.youtube.com/watch?v=Rzt30uytQs4)   
+
 ---
 
 ## What is the WebAuthn component?
