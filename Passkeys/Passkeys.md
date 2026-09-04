@@ -18,9 +18,11 @@
 
 [WebAuthn APIs for passwordless authentication on Windows](https://learn.microsoft.com/en-us/windows/security/identity-protection/hello-for-business/webauthn-apis)  
 
-[]()
+[Decentralized Identity Systems Concepts](https://www.neteye-blog.com/blog/2026/06/19/decentralized-identity-systems-concepts/)
 
-[](https://www.neteye-blog.com/blog/2026/08/11/decentralized-identity-systems-under-the-hood/)  
+[Decentralized Identity Systems: Under the Hood](https://www.neteye-blog.com/blog/2026/08/11/decentralized-identity-systems-under-the-hood/)  
+
+[Explore Microsoft Entra ID authentication methods - Microsoft Learn](https://learn.microsoft.com/en-us/training/modules/manage-implement-authentication-methods/2-explore-authentication-methods)  
 
 ---
 
