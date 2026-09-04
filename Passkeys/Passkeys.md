@@ -16,6 +16,12 @@
 
 [How to enable passkeys (FIDO2) in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-authentication-passkeys-fido2)  
 
+[WebAuthn APIs for passwordless authentication on Windows](https://learn.microsoft.com/en-us/windows/security/identity-protection/hello-for-business/webauthn-apis)  
+
+[]()
+
+[](https://www.neteye-blog.com/blog/2026/08/11/decentralized-identity-systems-under-the-hood/)  
+
 ---
 
 ## What is the WebAuthn component?
