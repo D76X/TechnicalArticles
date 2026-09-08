@@ -24,6 +24,8 @@
 
 [Explore Microsoft Entra ID authentication methods - Microsoft Learn](https://learn.microsoft.com/en-us/training/modules/manage-implement-authentication-methods/2-explore-authentication-methods)  
 
+[Where are the keys in passkeys? John Savill's Technical Training](https://www.youtube.com/watch?v=HJ78T5WOpW4&t=1s)   
+
 ---
 
 ## What is the WebAuthn component?
