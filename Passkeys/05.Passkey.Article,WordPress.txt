@@ -196,6 +196,17 @@ mathematically regenerated. The user completes a trusted recovery or reauthentic
 and thereby creates a new key pair and public key. The service can then disable or remove the old credential, revoke relevant sessions, and retain the replacement public key. This is credential rotation, analogous to replacing a lost security key, rather than 
 resetting a password stored by the service.
 
+Near Field Communication
+------------------------------------
+
+NFC (Near Field Communication) is a short-range transport used by some roaming FIDO authenticators. 
+The user holds the security key within a few centimeters of the phone or computer, allowing the 
+authenticator to communicate directly with the intended client; the private key remains inside 
+the authenticator and is never transferred over NFC. NFC is therefore relevant because it supplies 
+a deliberate, close-range interaction that a remote attacker cannot perform from a distant machine. 
+It does not replace WebAuthn's origin and RP-ID binding or the local user gesture: the authenticator 
+still signs the challenge and the relying party still verifies the signature [4].
+
 DEVICE-BOUND AND SYNCED PRIVATE KEYS
 ------------------------------------
 
@@ -274,14 +285,6 @@ With an external authenticator, the authenticator must be physically associated 
 - an NFC key is held near it;
 - a phone-to-computer flow uses a transaction-specific QR code and Bluetooth to establish nearby presence before protected communication continues;
 - a platform authenticator such as Windows Hello is already inside the client.
-
-NFC (Near Field Communication) is a short-range transport used by some roaming FIDO authenticators. 
-The user holds the security key within a few centimetres of the phone or computer, allowing the 
-authenticator to communicate directly with the intended client; the private key remains inside the
-authenticator and is never transferred over NFC. NFC is therefore relevant because it supplies a deliberate, 
-close-range interaction that a remote attacker cannot perform from a distant machine. It does not replace 
-WebAuthn's origin and RP-ID binding or the local user gesture: the authenticator still signs the challenge 
-and the relying party still verifies the signature [4].
 
 This removes the transferable code and the human relay. Alice cannot read a cryptographic response 
 from her passkey to a caller. The private key performs the operation only within the mediated ceremony.
