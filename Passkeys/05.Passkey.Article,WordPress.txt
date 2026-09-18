@@ -123,11 +123,10 @@ that signature with the public key. This is fundamentally different from a passw
 bearer secret: whoever knows it can present it. A private key is used to produce a signature but is not disclosed. 
 Stealing the service's public-key database does not provide what is needed to impersonate its users.
 
-“Passkey” is the user-facing name for this passwordless FIDO credential. The technical foundation 
-combines two specifications 3:
+“Passkey” is the user-facing name for this passwordless FIDO2 credential. The technical foundation combines two specifications:
 
-- WebAuthn, the W3C web API and security model used by the browser and relying party;
-- CTAP, the FIDO client-to-authenticator protocol used for external authenticators and cross-device communication.
+- WebAuthn, the W3C web API and security model used by the browser and relying party[3];
+- CTAP, the FIDO client-to-authenticator protocol used for external authenticators and cross-device communication[4].
 
 THE FOUR PARTICIPANTS
 ---------------------
@@ -135,9 +134,10 @@ THE FOUR PARTICIPANTS
 RELYING PARTY
 -------------
 
-The relying party (RP) is the website or service performing authentication. It sends challenges, stores public keys, 
-validates signed assertions, and creates the application session. Its RP ID is normally an effective domain such as 
-example.com.
+The relying party (RP) is the website or service performing authentication. It sends challenges, stores public keys,
+validates signed assertions and creates the application session. Its RP ID is normally an effective domain such as
+example.com. The RP ID is an essential element of any phishing-resistant technology because it removes the human factor
+from the authentication mechanism.
 
 CLIENT
 ------
@@ -148,7 +148,7 @@ requesting origin and RP ID, communicates with an authenticator, and returns the
 For a web application, the important calls are conceptually:
 
 - navigator.credentials.create() to register a credential;
-- navigator.credentials.get() to authenticate with one 3.
+- navigator.credentials.get() to authenticate with one [3][7].
 
 AUTHENTICATOR
 -------------
@@ -158,7 +158,7 @@ The authenticator creates and uses the key.
 It can be:
 
 - a platform authenticator, such as Windows Hello or a phone's built-in credential provider;
-- a roaming USB, NFC, or Bluetooth security key;
+- a roaming USB, NFC, or Bluetooth security key (device);
 - a supported credential-provider application or password manager.
 
 The authenticator obtains user presence and, where required, local user verification through a PIN or biometric. 
@@ -177,7 +177,7 @@ WHERE THE KEYS LIVE
 
 The most important storage rule is simple: the relying party stores the public key, not the password and not 
 the private key. It also stores a credential ID and account metadata so it knows which public key to use. 
-The private key is held by the authenticator that created the credential 20. During a sign-in, the service sends 
+The private key is held by the authenticator that created the credential [20][21]. During a sign-in, the service sends 
 a fresh challenge, the authenticator signs it locally, and the relying party verifies the signature with the public key.
 
 This changes the consequences of a relying-party database breach. A stolen password database contains reusable bearer 
@@ -201,7 +201,7 @@ DEVICE-BOUND AND SYNCED PRIVATE KEYS
 
 For a device-bound passkey, the private key never leaves the authenticator. It may be protected by 
 a hardware security key, a device TPM, or another platform authenticator. A phone can authenticate to a 
-nearby computer using an approved cross-device flow, but the private key remains on the phone; proximity 
+nearby computer using an approved cross-device flow, but the private key always remains on the phone; proximity 
 transports the authorization result, not a copy of the key.
 
 A synced passkey has a different custody model. The credential provider or platform ecosystem—such as 
@@ -274,6 +274,14 @@ With an external authenticator, the authenticator must be physically associated 
 - an NFC key is held near it;
 - a phone-to-computer flow uses a transaction-specific QR code and Bluetooth to establish nearby presence before protected communication continues;
 - a platform authenticator such as Windows Hello is already inside the client.
+
+NFC (Near Field Communication) is a short-range transport used by some roaming FIDO authenticators. 
+The user holds the security key within a few centimetres of the phone or computer, allowing the 
+authenticator to communicate directly with the intended client; the private key remains inside the
+authenticator and is never transferred over NFC. NFC is therefore relevant because it supplies a deliberate, 
+close-range interaction that a remote attacker cannot perform from a distant machine. It does not replace 
+WebAuthn's origin and RP-ID binding or the local user gesture: the authenticator still signs the challenge 
+and the relying party still verifies the signature [4].
 
 This removes the transferable code and the human relay. Alice cannot read a cryptographic response 
 from her passkey to a caller. The private key performs the operation only within the mediated ceremony.
