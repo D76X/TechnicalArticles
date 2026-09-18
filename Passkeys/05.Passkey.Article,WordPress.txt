@@ -107,7 +107,7 @@ The user might see a convincing page and complete a real authentication. The pro
 WHAT A PASSKEY IS
 -----------------
 
-A passkey is a discoverable FIDO credential based on public-key cryptography. 
+A passkey is a discoverable FIDO2 credential based on public-key cryptography. 
 
 It consists logically of:
 
@@ -115,14 +115,13 @@ It consists logically of:
 - a public key, stored by the relying party, such as Microsoft, a bank, or an online shop;
 - metadata that associates the credential with the relying party and user account.
 
-The private key is not sent to the website. During authentication, it signs data containing 
+The private key is never sent to the website. During authentication, it signs data containing 
 a fresh challenge. The service verifies that signature with the public key.
 
-This is fundamentally different from a password. 
-A password is a bearer secret: whoever knows it can present it. 
-
-A private key is used to produce a signature but is not disclosed. Stealing the service's public-key 
-database does not provide what is needed to impersonate its users.
+During authentication, the private key signs data containing a fresh challenge. The service verifies 
+that signature with the public key. This is fundamentally different from a password; a password is a 
+bearer secret: whoever knows it can present it. A private key is used to produce a signature but is not disclosed. 
+Stealing the service's public-key database does not provide what is needed to impersonate its users.
 
 “Passkey” is the user-facing name for this passwordless FIDO credential. The technical foundation 
 combines two specifications 3:
