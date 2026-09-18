@@ -75,19 +75,19 @@ The improvement is real. An attacker who steals only the password might still be
 THE REMOTE HELP-DESK ATTACK
 ---------------------------
 
-Consider Alice, whose company uses a password plus Authenticator number matching:
+Consider Alice, whose company uses a password plus Microsoft Authenticator number matching:
 
-1. An attacker obtains Alice's password from an earlier breach or false login page.
-2. The attacker starts a real Microsoft 365 sign-in from a remote computer.
-3. Microsoft displays 42 in the attacker's browser and sends a number-matching prompt to Alice's phone.
-4. The attacker calls Alice while impersonating the help desk: “We detected an attack on your account. To prove that you are Alice, enter 42 in the prompt I just sent.”
-5. The prompt is genuinely from Microsoft and the number is correct, so Alice complies.
-6. Microsoft receives a valid password and second factor and issues a session to the attacker's browser.
-7. The caller says the incident is resolved while using that session to access corporate resources [2].
+1. An attacker obtains Alice's username and password, for example through a previous breach or a phishing site.
+2. The attacker starts a genuine Microsoft 365 sign-in from a remote computer and submits Alice's password.
+3. Microsoft Entra validates the password, displays a number such as 42 in the attacker's browser, and automatically triggers a genuine Authenticator notification on Alice's phone. Alice may need to tap the notification to open Authenticator, and delivery depends on normal device and network conditions [22].
+4. The attacker calls Alice, either before or after initiating the sign-in, while impersonating the help desk: “We detected an issue with your account. You should have received a Microsoft Authenticator request. Enter the number I give you into that request.”
+5. The attacker reads 42 from the attacker's browser, and Alice enters it into the genuine Authenticator request.
+6. Entra receives the valid password and successful MFA response and completes the authentication flow for the attacker's browser.
+7. Depending on the organization's policies and Conditional Access controls, the attacker may receive a usable session or tokens and attempt to access corporate resources [2].
 
-Number matching has prevented blind approvals and reduced MFA fatigue, but it has not cryptographically connected Alice's phone to the client being authenticated. Alice is the communication bridge between two devices that might be thousands of kilometres apart.
+The important detail is that the attacker does not manually send the Authenticator notification. The attacker initiates the real login that causes Microsoft Entra to generate and deliver it. Number matching prevents an attacker from succeeding merely by triggering blind Approve prompts and hoping that the victim taps one accidentally, but it does not by itself prevent a real-time attacker from reading the number to the victim over a phone call. Microsoft therefore treats number matching as a security improvement, not as phishing-resistant authentication [22].
 
-SMS and time-based one-time passwords have the same relay property. A caller or false page asks for the current code and uses it immediately. The code can expire after 30 seconds and still provide enough time.
+Alice is still the communication bridge between the genuine Authenticator request on her phone and the attacker's remote browser. SMS and time-based one-time passwords have the same relay property: a caller or false page asks for the current code and uses it immediately. The code can expire after 30 seconds and still provide enough time.
 
 THE PHISHING-PROXY ATTACK
 -------------------------
@@ -499,5 +499,6 @@ REFERENCES
 19. Microsoft Learn, Passkeys (FIDO2) authentication method in Microsoft Entra ID (https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-passwordless).
 20. John Savill's Technical Training, Where are the keys in passkeys? (https://www.youtube.com/watch?v=HJ78T5WOpW4), YouTube.
 21. Microsoft Learn, Explore Microsoft Entra ID authentication methods (https://learn.microsoft.com/en-us/training/modules/manage-implement-authentication-methods/2-explore-authentication-methods).
+22. Microsoft Learn, How number matching works (https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-mfa-number-match).
 
 All online references were accessed on 4 September 2026.
